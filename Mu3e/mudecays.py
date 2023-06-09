@@ -29,9 +29,9 @@ Gamma_mu = (
 
 # Results from MadGraph run:
 # 3e2nu seem ok! -- BR ~ 3.6e-5 # from https://arxiv.org/pdf/1811.10965.pdf
-BR_mu3e2nu = 1.155e-23 / Gamma_mu
+BR_mu3e2nu = (1.155e-20 / u.MeV) / (Gamma_mu / u.MeV)
 # 5e2nu -- no known resul in literature
-BR_mu5e2nu = 1.342e-28 / Gamma_mu
+BR_mu5e2nu = (1.342e-25 / u.MeV) / (Gamma_mu / u.MeV)
 
 
 CHANNELS = ["mu1e2nu", "mu3e2nu", "mu5e2nu", "mu5e"]
@@ -176,7 +176,7 @@ class Process:
         for name in self.particle_names:
             self.particles[name] = self.P_grid[:, :, self.particle_names.index(name)]
 
-    def get_track_moomenta(self):
+    def get_track_momenta(self):
         self.tracks = {}
 
         for name, p in self.particles.items():
@@ -268,11 +268,12 @@ class Process:
                 arc_R = fm.radius_of_curvature(pT, Bfield=1.0)
 
                 # Time to exit from the detector in z coordinate
-                t_exit = fm.time_of_exit(fm.layer4_L / 2 + fm.recurler_L, beta_L)
+                _t_exit = fm.time_of_exit(self.z, beta_L)
 
-                max_arc_angle = np.where(
+                # Maximum arc-angle of the trajectory (>= 2pi if fully recurled)
+                _max_arc_angle = np.where(
                     arc_R > 0,
-                    t_exit
+                    _t_exit
                     * np.abs(beta_T)
                     * fm.c_light
                     / (2 * np.pi * arc_R)
@@ -281,29 +282,31 @@ class Process:
                     0,
                 )
 
-                # x,y coordinate of exit point
-                transv_pos_at_exit = (
-                    np.sqrt(2) * arc_R * np.sqrt(1 - np.cos(max_arc_angle))
-                )
-                _max_transv_pos = (
+                # distance from the beam axis at exit point
+                _chord_length = np.sqrt(2) * arc_R * np.sqrt(1 - np.cos(_max_arc_angle))
+                _max_chord_length = (
                     np.sqrt(2)
                     * arc_R
-                    * np.sqrt(1 - np.cos(np.minimum(max_arc_angle, np.pi)))
+                    * np.sqrt(1 - np.cos(np.minimum(_max_arc_angle, np.pi)))
                 )
 
+                # FIX-ME -- correct this with the appropriate angle between chord and beam-radius.
+                _transv_pos_at_exit = _chord_length + fm.r(self.x, self.y)
+                _max_transv_pos = _max_chord_length + fm.r(self.x, self.y)
+
                 # Time until the track is recurled
-                t_recurl = fm.time_of_recurl(arc_R, beta_T)
-                z_recurl = t_recurl * beta_L * fm.c_light
+                _t_recurl = fm.time_of_recurl(arc_R, beta_T)
+                _z_recurl = _t_recurl * beta_L * fm.c_light
 
                 hit_recurler = (
-                    np.abs(z_recurl) > fm.recurler_L / 2 + fm.outer_recurler_gap
+                    np.abs(_z_recurl) > fm.recurler_L / 2 + fm.outer_recurler_gap
                 ) & (
-                    np.abs(z_recurl)
+                    np.abs(_z_recurl)
                     < fm.recurler_L / 2 + fm.recurler_L + fm.outer_recurler_gap
                 )
 
                 _short_track = _max_transv_pos >= fm.layer4_R
-                _long_track = _short_track & (transv_pos_at_exit < fm.layer4_R)
+                _long_track = _short_track & (_transv_pos_at_exit < fm.layer4_R)
 
                 # Did it hit the inner cylinder?
                 self.n_hits[name][_short_track] += 4
@@ -311,7 +314,7 @@ class Process:
                 # Did it hit the outer cylinder?
                 self.n_hits[name][_long_track] += 2
                 self.n_hits[name] += 2 * (
-                    _long_track & (transv_pos_at_exit < fm.layer2_R)
+                    _long_track & (_transv_pos_at_exit < fm.layer2_R)
                 )
 
                 self.n_short_tracks += 1 * _short_track

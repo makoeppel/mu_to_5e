@@ -1,39 +1,14 @@
 import numpy as np
 import os
 from scipy.interpolate import interp1d
-from DarkNews import Cfourvec as Cfv
 from particle import literals as lp
+from DarkNews import Cfourvec as Cfv
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
 
 import hepunits as u
 
 c_light = u.c_light / u.mm * u.s
-
-
-def r(x, y):
-    return np.sqrt(x**2 + y**2)
-
-
-def radius_of_curvature(p, Bfield=1.0):
-    # radius in mm, Bfield in Tesla, and p in MeV
-    return p / 0.3 / (Bfield)  # in mm
-
-
-def time_of_recurl(R, beta_T):
-    # in seconds
-    return 2 * np.pi * R * 0.6 / (c_light * np.abs(beta_T))
-
-
-def time_of_exit(L, beta_L):
-    # in seconds
-    return L / (c_light * np.abs(beta_L))
-
-
-def z_of_recurl(R, beta_T):
-    # in mm
-    return 2 * np.pi * R * 0.6 / (c_light * np.abs(beta_T))
-
 
 ##########################
 # Geometrical properties
@@ -53,6 +28,33 @@ layer4_L = 372.6  # mm
 
 outer_recurler_gap = 20  # mm
 recurler_L = 340  # mm
+
+
+def r(x, y):
+    return np.sqrt(x**2 + y**2)
+
+
+def radius_of_curvature(p, Bfield=1.0):
+    # radius in mm, Bfield in Tesla, and p in MeV
+    return p / 0.3 / (Bfield)  # in mm
+
+
+def time_of_recurl(R, beta_T):
+    # in seconds
+    return 2 * np.pi * R * 0.6 / (c_light * np.abs(beta_T))
+
+
+def time_of_exit(z, beta_L):
+    # in seconds
+    L = layer4_L / 2 + recurler_L + outer_recurler_gap
+    return np.where(beta_L * z >= 0, (L - np.abs(z)), (L + np.abs(z))) / (
+        c_light * np.abs(beta_L)
+    )
+
+
+def z_of_recurl(R, beta_T):
+    # in mm
+    return 2 * np.pi * R * 0.6 / (c_light * np.abs(beta_T))
 
 
 def Rcone(z):

@@ -34,11 +34,11 @@ def std_fig(ax_form=std_axes_form, figsize=std_figsize, rasterized=False):
         "legend.frameon": False,
         "legend.loc": "best",
     }
-    # plt.rcParams["text.latex.preamble"] = r"\usepackage{amsmath}\usepackage{amssymb}"
-    # rc("font", **{"family": "serif", "serif": ["Computer Modern"]})
-    # rc("text", usetex=True)
-    # rcParams.update(rcparams)
-    mpl.rcParams["hatch.linewidth"] = 0.3
+    plt.rcParams["text.latex.preamble"] = r"\usepackage{amsmath}\usepackage{amssymb}"
+    rc("font", **{"family": "serif", "serif": ["Computer Modern"]})
+    rc("text", usetex=True)
+    rcParams.update(rcparams)
+    mpl.rcParams["hatch.linewidth"] = 0.25
     fig = plt.figure(figsize=figsize)
     ax = fig.add_axes(ax_form, rasterized=rasterized)
     ax.patch.set_alpha(0.0)
@@ -79,7 +79,7 @@ def EventDraw(
         draw_layer(ax, R, vert, **det_kwargs)
 
     if density:
-        draw_decay_density(fig, ax, decay)
+        draw_decay_density(fig, ax, density)
 
     ax.plot([], [], label=r"$e^-$", color=electron_color, lw=1, ls="-")
     ax.plot([], [], label=r"$e^+$", color=positron_color, lw=1, ls="-")
@@ -214,19 +214,20 @@ def draw_decay_density(fig, ax, decay, **kwargs):
     h = ax.hist2d(
         decay.x,
         decay.y,
-        weights=decay.weights / np.max(decay.weights) / 40 / 5,
+        weights=decay.weights / decay.weights.max(),
         bins=(40, 40),
         cmap="Blues",
-        cmin=1e-100,
+        cmin=0,
+        # cmax=1,
         density=False,
         zorder=0,
         **kwargs,
     )
 
-    cb = fig.colorbar(h[3], fraction=0.015, pad=0.05, location="bottom", aspect=40)
+    cb = fig.colorbar(h[3], fraction=0.025, pad=0.025, location="bottom", aspect=20)
 
     cb.ax.set_ylabel(
-        r"$\mu$ decays", fontsize=8, rotation=0, labelpad=22, color=text_color
+        r"$\mu$ decays", fontsize=8, rotation=0, labelpad=30, color=text_color
     )
     cb.ax.yaxis.set_label_position("right")
     cb.ax.zorder = -1
@@ -243,7 +244,7 @@ def draw_momentum_track(ax, p):
 
 
 def draw_track(
-    ax, p, name, TIME=1.0, pos=np.array([0, 0, 0]), draw_momentum=True, **kwargs
+    ax, p, r, name, TIME=1.0, pos=np.array([0, 0, 0]), draw_momentum=True, **kwargs
 ):
     # vel in z direction
     beta_L = p[-1] / p[0]
@@ -255,7 +256,7 @@ def draw_track(
     phi = np.arctan2(p[2], p[1])
 
     arc_R = fm.radius_of_curvature(pT, Bfield=1.0)
-    t_exit = fm.time_of_exit(fm.layer4_L, beta_L)
+    t_exit = fm.time_of_exit(r[-1], beta_L)
     max_arc_angle = (
         t_exit * np.abs(beta_T) * fm.c_light / (2 * np.pi * arc_R) * 2 * np.pi
         if arc_R > 0
@@ -288,7 +289,7 @@ def draw_track(
         "alpha": (1 if signal_event else 0.75),
     }
     if "e+" in name:
-        arc_kwargs["color"] = electron_color
+        arc_kwargs["color"] = positron_color
         arc_kwargs["xy"] = (
             arc_R * np.cos(np.pi / 2 + phi),
             arc_R * np.sin(np.pi / 2 + phi),
@@ -296,7 +297,7 @@ def draw_track(
         arc_kwargs["theta2"] = (np.pi + (np.pi / 2 + phi)) + max_arc_angle * TIME
         arc_kwargs["theta1"] = np.pi + (np.pi / 2 + phi)
     elif "e-" in name:
-        arc_kwargs["color"] = positron_color
+        arc_kwargs["color"] = electron_color
         arc_kwargs["xy"] = (
             arc_R * np.cos(phi - np.pi / 2),
             arc_R * np.sin(phi - np.pi / 2),
