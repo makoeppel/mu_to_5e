@@ -155,9 +155,24 @@ class Process:
 
         # ------------------------------------------------------
         # Generate the 4 momenta and weights
-        self.w_phasespace, self.wmax, self.particles = self.decay_chain.generate(
-            n_events=self.n_events, normalize_weights=False
-        )
+        if self.n_events > 1e4:
+            if self.n_events % 1e4 != 0:
+                self.n_events = int(self.n_events / 1e4) * 1e4
+            _n_batch = self.n_events / 1e4
+            _out = np.empty()
+
+            for i in range(_n_batch):
+                _out = self.decay_chain.generate(
+                    n_events=_n_batch, normalize_weights=False
+                )
+                _out = np.concatenate(_out, axis=0)
+            self.w_phasespace, self.wmax, self.particles = _out
+        else:
+            self.w_phasespace, self.wmax, self.particles = self.decay_chain.generate(
+                n_events=self.n_events, normalize_weights=False
+            )
+
+        # work with numpy
         self.w_phasespace = self.w_phasespace.numpy()
 
         # list of daughter particles
