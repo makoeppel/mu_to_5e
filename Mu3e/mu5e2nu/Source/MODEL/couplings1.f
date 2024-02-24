@@ -13,7 +13,5 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       INCLUDE 'input.inc'
       INCLUDE 'coupl.inc'
       GC_3 = -(MDL_EE*MDL_COMPLEXI)
-      GC_5 = MDL_EE__EXP__2*MDL_COMPLEXI
-      GC_100 = (MDL_EE*MDL_COMPLEXI*MDL_CONJG__CKM1X1)/(MDL_SW
-     $ *MDL_SQRT__2)
+      GC_40 = (MDL_EE*MDL_COMPLEXI)/(MDL_SW*MDL_SQRT__2)
       END

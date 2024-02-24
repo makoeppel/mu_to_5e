@@ -443,11 +443,11 @@ C
 C     CONSTANTS
 C     
       INTEGER    NGRAPHS
-      PARAMETER (NGRAPHS=234)
+      PARAMETER (NGRAPHS=84)
       INTEGER    NEXTERNAL
       PARAMETER (NEXTERNAL=8)
       INTEGER    NWAVEFUNCS, NCOLOR
-      PARAMETER (NWAVEFUNCS=58, NCOLOR=1)
+      PARAMETER (NWAVEFUNCS=50, NCOLOR=1)
       REAL*8     ZERO
       PARAMETER (ZERO=0D0)
       COMPLEX*16 IMAG1
@@ -488,896 +488,347 @@ C     ----------
       CALL OXXXXX(P(0,6),MDL_ME,NHEL(6),+1*IC(6),W(1,6))
       CALL IXXXXX(P(0,7),MDL_ME,NHEL(7),-1*IC(7),W(1,7))
       CALL OXXXXX(P(0,8),MDL_ME,NHEL(8),+1*IC(8),W(1,8))
-      CALL FFV2_3(W(1,4),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,9))
-      CALL FFV2_1(W(1,6),W(1,9),GC_100,ZERO,ZERO,W(1,10))
-      CALL FFV2_3(W(1,5),W(1,10),GC_100,MDL_MW,MDL_WW,W(1,11))
-      CALL FFV2_1(W(1,8),W(1,11),GC_100,ZERO,ZERO,W(1,12))
-      CALL FFV2_3(W(1,7),W(1,12),GC_100,MDL_MW,MDL_WW,W(1,13))
+      CALL FFV2_3(W(1,4),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,9))
+      CALL FFV1P0_3(W(1,5),W(1,6),GC_3,ZERO,ZERO,W(1,10))
+      CALL FFV2_2(W(1,2),W(1,9),GC_40,MDL_MM,ZERO,W(1,11))
+      CALL FFV1_2(W(1,7),W(1,10),GC_3,MDL_ME,ZERO,W(1,9))
+      CALL FFV1P0_3(W(1,9),W(1,8),GC_3,ZERO,ZERO,W(1,12))
 C     Amplitude(s) for diagram number 1
-      CALL FFV2_0(W(1,2),W(1,1),W(1,13),GC_100,AMP(1))
-      CALL FFV2_3(W(1,7),W(1,10),GC_100,MDL_MW,MDL_WW,W(1,13))
-      CALL FFV2_1(W(1,8),W(1,13),GC_100,ZERO,ZERO,W(1,12))
-      CALL FFV2_3(W(1,5),W(1,12),GC_100,MDL_MW,MDL_WW,W(1,14))
+      CALL FFV1_0(W(1,11),W(1,1),W(1,12),GC_3,AMP(1))
+      CALL FFV1_1(W(1,8),W(1,10),GC_3,MDL_ME,ZERO,W(1,13))
+      CALL FFV1P0_3(W(1,7),W(1,13),GC_3,ZERO,ZERO,W(1,14))
 C     Amplitude(s) for diagram number 2
-      CALL FFV2_0(W(1,2),W(1,1),W(1,14),GC_100,AMP(2))
-      CALL FFV2_1(W(1,8),W(1,9),GC_100,ZERO,ZERO,W(1,14))
-      CALL FFV2_3(W(1,5),W(1,14),GC_100,MDL_MW,MDL_WW,W(1,12))
-      CALL FFV2_1(W(1,6),W(1,12),GC_100,ZERO,ZERO,W(1,15))
-      CALL FFV2_3(W(1,7),W(1,15),GC_100,MDL_MW,MDL_WW,W(1,16))
+      CALL FFV1_0(W(1,11),W(1,1),W(1,14),GC_3,AMP(2))
+      CALL FFV1P0_3(W(1,7),W(1,8),GC_3,ZERO,ZERO,W(1,15))
+      CALL FFV1_2(W(1,11),W(1,10),GC_3,MDL_MM,ZERO,W(1,16))
 C     Amplitude(s) for diagram number 3
-      CALL FFV2_0(W(1,2),W(1,1),W(1,16),GC_100,AMP(3))
-      CALL FFV2_3(W(1,7),W(1,14),GC_100,MDL_MW,MDL_WW,W(1,16))
-      CALL FFV2_1(W(1,6),W(1,16),GC_100,ZERO,ZERO,W(1,15))
-      CALL FFV2_3(W(1,5),W(1,15),GC_100,MDL_MW,MDL_WW,W(1,17))
+      CALL FFV1_0(W(1,16),W(1,1),W(1,15),GC_3,AMP(3))
+      CALL FFV1_2(W(1,11),W(1,15),GC_3,MDL_MM,ZERO,W(1,16))
 C     Amplitude(s) for diagram number 4
-      CALL FFV2_0(W(1,2),W(1,1),W(1,17),GC_100,AMP(4))
-      CALL FFV1P0_3(W(1,5),W(1,6),GC_3,ZERO,ZERO,W(1,17))
-      CALL FFV2_2(W(1,2),W(1,9),GC_100,MDL_MM,ZERO,W(1,15))
-      CALL FFV1_2(W(1,7),W(1,17),GC_3,MDL_ME,ZERO,W(1,18))
-      CALL FFV1P0_3(W(1,18),W(1,8),GC_3,ZERO,ZERO,W(1,19))
+      CALL FFV1_0(W(1,16),W(1,1),W(1,10),GC_3,AMP(4))
+      CALL FFV1P0_3(W(1,5),W(1,8),GC_3,ZERO,ZERO,W(1,16))
+      CALL FFV1_1(W(1,6),W(1,16),GC_3,MDL_ME,ZERO,W(1,17))
+      CALL FFV1P0_3(W(1,7),W(1,17),GC_3,ZERO,ZERO,W(1,18))
 C     Amplitude(s) for diagram number 5
-      CALL FFV1_0(W(1,15),W(1,1),W(1,19),GC_3,AMP(5))
-      CALL FFV1_1(W(1,8),W(1,17),GC_3,MDL_ME,ZERO,W(1,20))
-      CALL FFV1P0_3(W(1,7),W(1,20),GC_3,ZERO,ZERO,W(1,21))
+      CALL FFV1_0(W(1,11),W(1,1),W(1,18),GC_3,AMP(5))
+      CALL FFV1_2(W(1,7),W(1,16),GC_3,MDL_ME,ZERO,W(1,19))
+      CALL FFV1P0_3(W(1,19),W(1,6),GC_3,ZERO,ZERO,W(1,20))
 C     Amplitude(s) for diagram number 6
-      CALL FFV1_0(W(1,15),W(1,1),W(1,21),GC_3,AMP(6))
-      CALL VVV1_2(W(1,17),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,22))
-      CALL FFV2_1(W(1,8),W(1,22),GC_100,ZERO,ZERO,W(1,23))
-      CALL FFV2_3(W(1,7),W(1,23),GC_100,MDL_MW,MDL_WW,W(1,24))
+      CALL FFV1_0(W(1,11),W(1,1),W(1,20),GC_3,AMP(6))
+      CALL FFV1P0_3(W(1,7),W(1,6),GC_3,ZERO,ZERO,W(1,21))
+      CALL FFV1_2(W(1,11),W(1,16),GC_3,MDL_MM,ZERO,W(1,22))
 C     Amplitude(s) for diagram number 7
-      CALL FFV2_0(W(1,2),W(1,1),W(1,24),GC_100,AMP(7))
-      CALL FFV2_2(W(1,2),W(1,16),GC_100,MDL_MM,ZERO,W(1,24))
+      CALL FFV1_0(W(1,22),W(1,1),W(1,21),GC_3,AMP(7))
+      CALL FFV1_2(W(1,11),W(1,21),GC_3,MDL_MM,ZERO,W(1,22))
 C     Amplitude(s) for diagram number 8
-      CALL FFV1_0(W(1,24),W(1,1),W(1,17),GC_3,AMP(8))
-      CALL VVV1_2(W(1,17),W(1,16),-GC_3,MDL_MW,MDL_WW,W(1,24))
+      CALL FFV1_0(W(1,22),W(1,1),W(1,16),GC_3,AMP(8))
+      CALL FFV1_2(W(1,5),W(1,21),GC_3,MDL_ME,ZERO,W(1,22))
+      CALL FFV1P0_3(W(1,22),W(1,8),GC_3,ZERO,ZERO,W(1,23))
 C     Amplitude(s) for diagram number 9
-      CALL FFV2_0(W(1,2),W(1,1),W(1,24),GC_100,AMP(9))
-      CALL FFV2_3(W(1,18),W(1,14),GC_100,MDL_MW,MDL_WW,W(1,24))
+      CALL FFV1_0(W(1,11),W(1,1),W(1,23),GC_3,AMP(9))
+      CALL FFV1_1(W(1,8),W(1,21),GC_3,MDL_ME,ZERO,W(1,24))
+      CALL FFV1P0_3(W(1,5),W(1,24),GC_3,ZERO,ZERO,W(1,25))
 C     Amplitude(s) for diagram number 10
-      CALL FFV2_0(W(1,2),W(1,1),W(1,24),GC_100,AMP(10))
-      CALL VVV1_2(W(1,19),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,24))
-C     Amplitude(s) for diagram number 11
-      CALL FFV2_0(W(1,2),W(1,1),W(1,24),GC_100,AMP(11))
-      CALL FFV2_1(W(1,20),W(1,9),GC_100,ZERO,ZERO,W(1,24))
-      CALL FFV2_3(W(1,7),W(1,24),GC_100,MDL_MW,MDL_WW,W(1,16))
-C     Amplitude(s) for diagram number 12
-      CALL FFV2_0(W(1,2),W(1,1),W(1,16),GC_100,AMP(12))
-      CALL VVV1_2(W(1,21),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,16))
-C     Amplitude(s) for diagram number 13
-      CALL FFV2_0(W(1,2),W(1,1),W(1,16),GC_100,AMP(13))
-      CALL FFV1P0_3(W(1,7),W(1,8),GC_3,ZERO,ZERO,W(1,16))
-      CALL FFV1_2(W(1,15),W(1,17),GC_3,MDL_MM,ZERO,W(1,24))
-C     Amplitude(s) for diagram number 14
-      CALL FFV1_0(W(1,24),W(1,1),W(1,16),GC_3,AMP(14))
-      CALL FFV1_2(W(1,15),W(1,16),GC_3,MDL_MM,ZERO,W(1,24))
-C     Amplitude(s) for diagram number 15
-      CALL FFV1_0(W(1,24),W(1,1),W(1,17),GC_3,AMP(15))
-      CALL FFV2_2(W(1,2),W(1,22),GC_100,MDL_MM,ZERO,W(1,24))
-C     Amplitude(s) for diagram number 16
-      CALL FFV1_0(W(1,24),W(1,1),W(1,16),GC_3,AMP(16))
-      CALL VVV1_2(W(1,16),W(1,22),-GC_3,MDL_MW,MDL_WW,W(1,24))
-C     Amplitude(s) for diagram number 17
-      CALL FFV2_0(W(1,2),W(1,1),W(1,24),GC_100,AMP(17))
-      CALL VVV1_2(W(1,16),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,24))
-      CALL FFV2_2(W(1,2),W(1,24),GC_100,MDL_MM,ZERO,W(1,22))
-C     Amplitude(s) for diagram number 18
-      CALL FFV1_0(W(1,22),W(1,1),W(1,17),GC_3,AMP(18))
-      CALL VVV1_2(W(1,17),W(1,24),-GC_3,MDL_MW,MDL_WW,W(1,22))
-C     Amplitude(s) for diagram number 19
-      CALL FFV2_0(W(1,2),W(1,1),W(1,22),GC_100,AMP(19))
-      CALL VVVV2_3(W(1,17),W(1,16),W(1,9),GC_5,MDL_MW,MDL_WW,W(1,22))
-C     Amplitude(s) for diagram number 20
-      CALL FFV2_0(W(1,2),W(1,1),W(1,22),GC_100,AMP(20))
-      CALL FFV1P0_3(W(1,5),W(1,8),GC_3,ZERO,ZERO,W(1,22))
-      CALL FFV1_1(W(1,6),W(1,22),GC_3,MDL_ME,ZERO,W(1,23))
-      CALL FFV1P0_3(W(1,7),W(1,23),GC_3,ZERO,ZERO,W(1,25))
-C     Amplitude(s) for diagram number 21
-      CALL FFV1_0(W(1,15),W(1,1),W(1,25),GC_3,AMP(21))
-      CALL FFV1_2(W(1,7),W(1,22),GC_3,MDL_ME,ZERO,W(1,26))
+      CALL FFV1_0(W(1,11),W(1,1),W(1,25),GC_3,AMP(10))
+      CALL FFV1_2(W(1,5),W(1,15),GC_3,MDL_ME,ZERO,W(1,26))
       CALL FFV1P0_3(W(1,26),W(1,6),GC_3,ZERO,ZERO,W(1,27))
+C     Amplitude(s) for diagram number 11
+      CALL FFV1_0(W(1,11),W(1,1),W(1,27),GC_3,AMP(11))
+      CALL FFV1_1(W(1,6),W(1,15),GC_3,MDL_ME,ZERO,W(1,28))
+      CALL FFV1P0_3(W(1,5),W(1,28),GC_3,ZERO,ZERO,W(1,29))
+C     Amplitude(s) for diagram number 12
+      CALL FFV1_0(W(1,11),W(1,1),W(1,29),GC_3,AMP(12))
+      CALL FFV2_3(W(1,5),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,11))
+      CALL FFV1P0_3(W(1,4),W(1,6),GC_3,ZERO,ZERO,W(1,30))
+      CALL FFV2_2(W(1,2),W(1,11),GC_40,MDL_MM,ZERO,W(1,31))
+      CALL FFV1_2(W(1,7),W(1,30),GC_3,MDL_ME,ZERO,W(1,11))
+      CALL FFV1P0_3(W(1,11),W(1,8),GC_3,ZERO,ZERO,W(1,32))
+C     Amplitude(s) for diagram number 13
+      CALL FFV1_0(W(1,31),W(1,1),W(1,32),GC_3,AMP(13))
+      CALL FFV1_1(W(1,8),W(1,30),GC_3,MDL_ME,ZERO,W(1,33))
+      CALL FFV1P0_3(W(1,7),W(1,33),GC_3,ZERO,ZERO,W(1,34))
+C     Amplitude(s) for diagram number 14
+      CALL FFV1_0(W(1,31),W(1,1),W(1,34),GC_3,AMP(14))
+      CALL FFV1_2(W(1,31),W(1,30),GC_3,MDL_MM,ZERO,W(1,35))
+C     Amplitude(s) for diagram number 15
+      CALL FFV1_0(W(1,35),W(1,1),W(1,15),GC_3,AMP(15))
+      CALL FFV1_2(W(1,31),W(1,15),GC_3,MDL_MM,ZERO,W(1,35))
+C     Amplitude(s) for diagram number 16
+      CALL FFV1_0(W(1,35),W(1,1),W(1,30),GC_3,AMP(16))
+      CALL FFV1P0_3(W(1,4),W(1,8),GC_3,ZERO,ZERO,W(1,35))
+      CALL FFV1_1(W(1,6),W(1,35),GC_3,MDL_ME,ZERO,W(1,36))
+      CALL FFV1P0_3(W(1,7),W(1,36),GC_3,ZERO,ZERO,W(1,37))
+C     Amplitude(s) for diagram number 17
+      CALL FFV1_0(W(1,31),W(1,1),W(1,37),GC_3,AMP(17))
+      CALL FFV1_2(W(1,7),W(1,35),GC_3,MDL_ME,ZERO,W(1,38))
+      CALL FFV1P0_3(W(1,38),W(1,6),GC_3,ZERO,ZERO,W(1,39))
+C     Amplitude(s) for diagram number 18
+      CALL FFV1_0(W(1,31),W(1,1),W(1,39),GC_3,AMP(18))
+      CALL FFV1_2(W(1,31),W(1,35),GC_3,MDL_MM,ZERO,W(1,40))
+C     Amplitude(s) for diagram number 19
+      CALL FFV1_0(W(1,40),W(1,1),W(1,21),GC_3,AMP(19))
+      CALL FFV1_2(W(1,31),W(1,21),GC_3,MDL_MM,ZERO,W(1,40))
+C     Amplitude(s) for diagram number 20
+      CALL FFV1_0(W(1,40),W(1,1),W(1,35),GC_3,AMP(20))
+      CALL FFV1_2(W(1,4),W(1,21),GC_3,MDL_ME,ZERO,W(1,40))
+      CALL FFV1P0_3(W(1,40),W(1,8),GC_3,ZERO,ZERO,W(1,41))
+C     Amplitude(s) for diagram number 21
+      CALL FFV1_0(W(1,31),W(1,1),W(1,41),GC_3,AMP(21))
+      CALL FFV1P0_3(W(1,4),W(1,24),GC_3,ZERO,ZERO,W(1,42))
 C     Amplitude(s) for diagram number 22
-      CALL FFV1_0(W(1,15),W(1,1),W(1,27),GC_3,AMP(22))
-      CALL VVV1_2(W(1,22),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,28))
-      CALL FFV2_1(W(1,6),W(1,28),GC_100,ZERO,ZERO,W(1,29))
-      CALL FFV2_3(W(1,7),W(1,29),GC_100,MDL_MW,MDL_WW,W(1,30))
+      CALL FFV1_0(W(1,31),W(1,1),W(1,42),GC_3,AMP(22))
+      CALL FFV1_2(W(1,4),W(1,15),GC_3,MDL_ME,ZERO,W(1,24))
+      CALL FFV1P0_3(W(1,24),W(1,6),GC_3,ZERO,ZERO,W(1,43))
 C     Amplitude(s) for diagram number 23
-      CALL FFV2_0(W(1,2),W(1,1),W(1,30),GC_100,AMP(23))
-      CALL FFV2_2(W(1,2),W(1,13),GC_100,MDL_MM,ZERO,W(1,30))
+      CALL FFV1_0(W(1,31),W(1,1),W(1,43),GC_3,AMP(23))
+      CALL FFV1P0_3(W(1,4),W(1,28),GC_3,ZERO,ZERO,W(1,44))
 C     Amplitude(s) for diagram number 24
-      CALL FFV1_0(W(1,30),W(1,1),W(1,22),GC_3,AMP(24))
-      CALL VVV1_2(W(1,22),W(1,13),-GC_3,MDL_MW,MDL_WW,W(1,30))
+      CALL FFV1_0(W(1,31),W(1,1),W(1,44),GC_3,AMP(24))
+      CALL FFV2_3(W(1,7),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,31))
+      CALL FFV2_2(W(1,2),W(1,31),GC_40,MDL_MM,ZERO,W(1,28))
+      CALL FFV1_2(W(1,5),W(1,30),GC_3,MDL_ME,ZERO,W(1,31))
+      CALL FFV1P0_3(W(1,31),W(1,8),GC_3,ZERO,ZERO,W(1,45))
 C     Amplitude(s) for diagram number 25
-      CALL FFV2_0(W(1,2),W(1,1),W(1,30),GC_100,AMP(25))
-      CALL FFV2_3(W(1,26),W(1,10),GC_100,MDL_MW,MDL_WW,W(1,30))
+      CALL FFV1_0(W(1,28),W(1,1),W(1,45),GC_3,AMP(25))
+      CALL FFV1P0_3(W(1,5),W(1,33),GC_3,ZERO,ZERO,W(1,46))
 C     Amplitude(s) for diagram number 26
-      CALL FFV2_0(W(1,2),W(1,1),W(1,30),GC_100,AMP(26))
-      CALL FFV2_1(W(1,23),W(1,9),GC_100,ZERO,ZERO,W(1,30))
-      CALL FFV2_3(W(1,7),W(1,30),GC_100,MDL_MW,MDL_WW,W(1,13))
+      CALL FFV1_0(W(1,28),W(1,1),W(1,46),GC_3,AMP(26))
+      CALL FFV1_2(W(1,28),W(1,30),GC_3,MDL_MM,ZERO,W(1,33))
 C     Amplitude(s) for diagram number 27
-      CALL FFV2_0(W(1,2),W(1,1),W(1,13),GC_100,AMP(27))
-      CALL VVV1_2(W(1,25),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,13))
+      CALL FFV1_0(W(1,33),W(1,1),W(1,16),GC_3,AMP(27))
+      CALL FFV1_2(W(1,28),W(1,16),GC_3,MDL_MM,ZERO,W(1,33))
 C     Amplitude(s) for diagram number 28
-      CALL FFV2_0(W(1,2),W(1,1),W(1,13),GC_100,AMP(28))
-      CALL VVV1_2(W(1,27),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,13))
+      CALL FFV1_0(W(1,33),W(1,1),W(1,30),GC_3,AMP(28))
+      CALL FFV1_2(W(1,5),W(1,35),GC_3,MDL_ME,ZERO,W(1,33))
+      CALL FFV1P0_3(W(1,33),W(1,6),GC_3,ZERO,ZERO,W(1,47))
 C     Amplitude(s) for diagram number 29
-      CALL FFV2_0(W(1,2),W(1,1),W(1,13),GC_100,AMP(29))
-      CALL FFV1P0_3(W(1,7),W(1,6),GC_3,ZERO,ZERO,W(1,13))
-      CALL FFV1_2(W(1,15),W(1,22),GC_3,MDL_MM,ZERO,W(1,30))
+      CALL FFV1_0(W(1,28),W(1,1),W(1,47),GC_3,AMP(29))
+      CALL FFV1P0_3(W(1,5),W(1,36),GC_3,ZERO,ZERO,W(1,48))
 C     Amplitude(s) for diagram number 30
-      CALL FFV1_0(W(1,30),W(1,1),W(1,13),GC_3,AMP(30))
-      CALL FFV1_2(W(1,15),W(1,13),GC_3,MDL_MM,ZERO,W(1,30))
+      CALL FFV1_0(W(1,28),W(1,1),W(1,48),GC_3,AMP(30))
+      CALL FFV1_2(W(1,28),W(1,35),GC_3,MDL_MM,ZERO,W(1,36))
 C     Amplitude(s) for diagram number 31
-      CALL FFV1_0(W(1,30),W(1,1),W(1,22),GC_3,AMP(31))
-      CALL FFV2_2(W(1,2),W(1,28),GC_100,MDL_MM,ZERO,W(1,30))
+      CALL FFV1_0(W(1,36),W(1,1),W(1,10),GC_3,AMP(31))
+      CALL FFV1_2(W(1,28),W(1,10),GC_3,MDL_MM,ZERO,W(1,36))
 C     Amplitude(s) for diagram number 32
-      CALL FFV1_0(W(1,30),W(1,1),W(1,13),GC_3,AMP(32))
-      CALL VVV1_2(W(1,13),W(1,28),-GC_3,MDL_MW,MDL_WW,W(1,30))
+      CALL FFV1_0(W(1,36),W(1,1),W(1,35),GC_3,AMP(32))
+      CALL FFV1_2(W(1,4),W(1,10),GC_3,MDL_ME,ZERO,W(1,36))
+      CALL FFV1P0_3(W(1,36),W(1,8),GC_3,ZERO,ZERO,W(1,49))
 C     Amplitude(s) for diagram number 33
-      CALL FFV2_0(W(1,2),W(1,1),W(1,30),GC_100,AMP(33))
-      CALL VVV1_2(W(1,13),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,30))
-      CALL FFV2_2(W(1,2),W(1,30),GC_100,MDL_MM,ZERO,W(1,28))
+      CALL FFV1_0(W(1,28),W(1,1),W(1,49),GC_3,AMP(33))
+      CALL FFV1P0_3(W(1,4),W(1,13),GC_3,ZERO,ZERO,W(1,8))
 C     Amplitude(s) for diagram number 34
-      CALL FFV1_0(W(1,28),W(1,1),W(1,22),GC_3,AMP(34))
-      CALL VVV1_2(W(1,22),W(1,30),-GC_3,MDL_MW,MDL_WW,W(1,28))
+      CALL FFV1_0(W(1,28),W(1,1),W(1,8),GC_3,AMP(34))
+      CALL FFV1_2(W(1,4),W(1,16),GC_3,MDL_ME,ZERO,W(1,13))
+      CALL FFV1P0_3(W(1,13),W(1,6),GC_3,ZERO,ZERO,W(1,50))
 C     Amplitude(s) for diagram number 35
-      CALL FFV2_0(W(1,2),W(1,1),W(1,28),GC_100,AMP(35))
-      CALL VVVV2_3(W(1,22),W(1,13),W(1,9),GC_5,MDL_MW,MDL_WW,W(1,28))
+      CALL FFV1_0(W(1,28),W(1,1),W(1,50),GC_3,AMP(35))
+      CALL FFV1P0_3(W(1,4),W(1,17),GC_3,ZERO,ZERO,W(1,6))
 C     Amplitude(s) for diagram number 36
-      CALL FFV2_0(W(1,2),W(1,1),W(1,28),GC_100,AMP(36))
-      CALL FFV1_2(W(1,5),W(1,13),GC_3,MDL_ME,ZERO,W(1,28))
-      CALL FFV1P0_3(W(1,28),W(1,8),GC_3,ZERO,ZERO,W(1,29))
+      CALL FFV1_0(W(1,28),W(1,1),W(1,6),GC_3,AMP(36))
+      CALL FFV1_2(W(1,7),W(1,45),GC_3,MDL_ME,ZERO,W(1,28))
+      CALL FFV2_3(W(1,28),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,45))
 C     Amplitude(s) for diagram number 37
-      CALL FFV1_0(W(1,15),W(1,1),W(1,29),GC_3,AMP(37))
-      CALL FFV1_1(W(1,8),W(1,13),GC_3,MDL_ME,ZERO,W(1,31))
-      CALL FFV1P0_3(W(1,5),W(1,31),GC_3,ZERO,ZERO,W(1,32))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,45),GC_40,AMP(37))
+      CALL FFV1_2(W(1,5),W(1,32),GC_3,MDL_ME,ZERO,W(1,45))
+      CALL FFV2_3(W(1,45),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,32))
 C     Amplitude(s) for diagram number 38
-      CALL FFV1_0(W(1,15),W(1,1),W(1,32),GC_3,AMP(38))
-      CALL FFV2_1(W(1,8),W(1,30),GC_100,ZERO,ZERO,W(1,33))
-      CALL FFV2_3(W(1,5),W(1,33),GC_100,MDL_MW,MDL_WW,W(1,30))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,32),GC_40,AMP(38))
+      CALL FFV1_2(W(1,7),W(1,46),GC_3,MDL_ME,ZERO,W(1,32))
+      CALL FFV2_3(W(1,32),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,46))
 C     Amplitude(s) for diagram number 39
-      CALL FFV2_0(W(1,2),W(1,1),W(1,30),GC_100,AMP(39))
-      CALL FFV2_2(W(1,2),W(1,12),GC_100,MDL_MM,ZERO,W(1,30))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,46),GC_40,AMP(39))
+      CALL FFV1_2(W(1,5),W(1,34),GC_3,MDL_ME,ZERO,W(1,46))
+      CALL FFV2_3(W(1,46),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,34))
 C     Amplitude(s) for diagram number 40
-      CALL FFV1_0(W(1,30),W(1,1),W(1,13),GC_3,AMP(40))
-      CALL VVV1_2(W(1,13),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,30))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,34),GC_40,AMP(40))
+      CALL FFV2_3(W(1,11),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,34))
+      CALL FFV2_2(W(1,2),W(1,34),GC_40,MDL_MM,ZERO,W(1,46))
 C     Amplitude(s) for diagram number 41
-      CALL FFV2_0(W(1,2),W(1,1),W(1,30),GC_100,AMP(41))
-      CALL FFV2_3(W(1,28),W(1,14),GC_100,MDL_MW,MDL_WW,W(1,30))
+      CALL FFV1_0(W(1,46),W(1,1),W(1,16),GC_3,AMP(41))
+      CALL FFV1_2(W(1,11),W(1,16),GC_3,MDL_ME,ZERO,W(1,46))
+      CALL FFV2_3(W(1,46),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,11))
 C     Amplitude(s) for diagram number 42
-      CALL FFV2_0(W(1,2),W(1,1),W(1,30),GC_100,AMP(42))
-      CALL VVV1_2(W(1,29),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,30))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,11),GC_40,AMP(42))
+      CALL FFV2_3(W(1,19),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,11))
+      CALL FFV2_2(W(1,2),W(1,11),GC_40,MDL_MM,ZERO,W(1,46))
 C     Amplitude(s) for diagram number 43
-      CALL FFV2_0(W(1,2),W(1,1),W(1,30),GC_100,AMP(43))
-      CALL FFV2_1(W(1,31),W(1,9),GC_100,ZERO,ZERO,W(1,30))
-      CALL FFV2_3(W(1,5),W(1,30),GC_100,MDL_MW,MDL_WW,W(1,14))
+      CALL FFV1_0(W(1,46),W(1,1),W(1,30),GC_3,AMP(43))
+      CALL FFV1_2(W(1,19),W(1,30),GC_3,MDL_ME,ZERO,W(1,46))
+      CALL FFV2_3(W(1,46),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,19))
 C     Amplitude(s) for diagram number 44
-      CALL FFV2_0(W(1,2),W(1,1),W(1,14),GC_100,AMP(44))
-      CALL VVV1_2(W(1,32),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,14))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,19),GC_40,AMP(44))
+      CALL FFV2_3(W(1,31),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,19))
+      CALL FFV2_2(W(1,2),W(1,19),GC_40,MDL_MM,ZERO,W(1,46))
 C     Amplitude(s) for diagram number 45
-      CALL FFV2_0(W(1,2),W(1,1),W(1,14),GC_100,AMP(45))
-      CALL FFV1_2(W(1,5),W(1,16),GC_3,MDL_ME,ZERO,W(1,14))
-      CALL FFV1P0_3(W(1,14),W(1,6),GC_3,ZERO,ZERO,W(1,30))
+      CALL FFV1_0(W(1,46),W(1,1),W(1,15),GC_3,AMP(45))
+      CALL FFV1_2(W(1,31),W(1,15),GC_3,MDL_ME,ZERO,W(1,46))
+      CALL FFV2_3(W(1,46),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,31))
 C     Amplitude(s) for diagram number 46
-      CALL FFV1_0(W(1,15),W(1,1),W(1,30),GC_3,AMP(46))
-      CALL FFV1_1(W(1,6),W(1,16),GC_3,MDL_ME,ZERO,W(1,12))
-      CALL FFV1P0_3(W(1,5),W(1,12),GC_3,ZERO,ZERO,W(1,33))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,31),GC_40,AMP(46))
+      CALL FFV2_3(W(1,26),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,31))
+      CALL FFV2_2(W(1,2),W(1,31),GC_40,MDL_MM,ZERO,W(1,46))
 C     Amplitude(s) for diagram number 47
-      CALL FFV1_0(W(1,15),W(1,1),W(1,33),GC_3,AMP(47))
-      CALL FFV2_2(W(1,2),W(1,11),GC_100,MDL_MM,ZERO,W(1,15))
+      CALL FFV1_0(W(1,46),W(1,1),W(1,30),GC_3,AMP(47))
+      CALL FFV1_2(W(1,26),W(1,30),GC_3,MDL_ME,ZERO,W(1,46))
+      CALL FFV2_3(W(1,46),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,30))
 C     Amplitude(s) for diagram number 48
-      CALL FFV1_0(W(1,15),W(1,1),W(1,16),GC_3,AMP(48))
-      CALL VVV1_2(W(1,16),W(1,11),-GC_3,MDL_MW,MDL_WW,W(1,15))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,30),GC_40,AMP(48))
+      CALL FFV1_2(W(1,7),W(1,47),GC_3,MDL_ME,ZERO,W(1,30))
+      CALL FFV2_3(W(1,30),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,47))
 C     Amplitude(s) for diagram number 49
-      CALL FFV2_0(W(1,2),W(1,1),W(1,15),GC_100,AMP(49))
-      CALL FFV2_3(W(1,14),W(1,10),GC_100,MDL_MW,MDL_WW,W(1,15))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,47),GC_40,AMP(49))
+      CALL FFV1_2(W(1,7),W(1,48),GC_3,MDL_ME,ZERO,W(1,47))
+      CALL FFV2_3(W(1,47),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,48))
 C     Amplitude(s) for diagram number 50
-      CALL FFV2_0(W(1,2),W(1,1),W(1,15),GC_100,AMP(50))
-      CALL FFV2_1(W(1,6),W(1,24),GC_100,ZERO,ZERO,W(1,15))
-      CALL FFV2_3(W(1,5),W(1,15),GC_100,MDL_MW,MDL_WW,W(1,24))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,48),GC_40,AMP(50))
+      CALL FFV1_2(W(1,5),W(1,37),GC_3,MDL_ME,ZERO,W(1,48))
+      CALL FFV2_3(W(1,48),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,37))
 C     Amplitude(s) for diagram number 51
-      CALL FFV2_0(W(1,2),W(1,1),W(1,24),GC_100,AMP(51))
-      CALL VVV1_2(W(1,30),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,24))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,37),GC_40,AMP(51))
+      CALL FFV1_2(W(1,5),W(1,39),GC_3,MDL_ME,ZERO,W(1,37))
+      CALL FFV2_3(W(1,37),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,39))
 C     Amplitude(s) for diagram number 52
-      CALL FFV2_0(W(1,2),W(1,1),W(1,24),GC_100,AMP(52))
-      CALL FFV2_1(W(1,12),W(1,9),GC_100,ZERO,ZERO,W(1,24))
-      CALL FFV2_3(W(1,5),W(1,24),GC_100,MDL_MW,MDL_WW,W(1,15))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,39),GC_40,AMP(52))
+      CALL FFV2_3(W(1,38),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,39))
+      CALL FFV2_2(W(1,2),W(1,39),GC_40,MDL_MM,ZERO,W(1,37))
 C     Amplitude(s) for diagram number 53
-      CALL FFV2_0(W(1,2),W(1,1),W(1,15),GC_100,AMP(53))
-      CALL VVV1_2(W(1,33),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,15))
+      CALL FFV1_0(W(1,37),W(1,1),W(1,10),GC_3,AMP(53))
+      CALL FFV1_2(W(1,38),W(1,10),GC_3,MDL_ME,ZERO,W(1,37))
+      CALL FFV2_3(W(1,37),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,38))
 C     Amplitude(s) for diagram number 54
-      CALL FFV2_0(W(1,2),W(1,1),W(1,15),GC_100,AMP(54))
-      CALL FFV2_3(W(1,5),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,15))
-      CALL FFV2_1(W(1,6),W(1,15),GC_100,ZERO,ZERO,W(1,9))
-      CALL FFV2_3(W(1,4),W(1,9),GC_100,MDL_MW,MDL_WW,W(1,24))
-      CALL FFV2_1(W(1,8),W(1,24),GC_100,ZERO,ZERO,W(1,10))
-      CALL FFV2_3(W(1,7),W(1,10),GC_100,MDL_MW,MDL_WW,W(1,11))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,38),GC_40,AMP(54))
+      CALL FFV2_3(W(1,9),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,38))
+      CALL FFV2_2(W(1,2),W(1,38),GC_40,MDL_MM,ZERO,W(1,37))
 C     Amplitude(s) for diagram number 55
-      CALL FFV2_0(W(1,2),W(1,1),W(1,11),GC_100,AMP(55))
-      CALL FFV2_3(W(1,7),W(1,9),GC_100,MDL_MW,MDL_WW,W(1,11))
-      CALL FFV2_1(W(1,8),W(1,11),GC_100,ZERO,ZERO,W(1,10))
-      CALL FFV2_3(W(1,4),W(1,10),GC_100,MDL_MW,MDL_WW,W(1,34))
+      CALL FFV1_0(W(1,37),W(1,1),W(1,35),GC_3,AMP(55))
+      CALL FFV1_2(W(1,9),W(1,35),GC_3,MDL_ME,ZERO,W(1,37))
+      CALL FFV2_3(W(1,37),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,9))
 C     Amplitude(s) for diagram number 56
-      CALL FFV2_0(W(1,2),W(1,1),W(1,34),GC_100,AMP(56))
-      CALL FFV2_1(W(1,8),W(1,15),GC_100,ZERO,ZERO,W(1,34))
-      CALL FFV2_3(W(1,4),W(1,34),GC_100,MDL_MW,MDL_WW,W(1,10))
-      CALL FFV2_1(W(1,6),W(1,10),GC_100,ZERO,ZERO,W(1,35))
-      CALL FFV2_3(W(1,7),W(1,35),GC_100,MDL_MW,MDL_WW,W(1,36))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,9),GC_40,AMP(56))
+      CALL FFV2_3(W(1,33),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,9))
+      CALL FFV2_2(W(1,2),W(1,9),GC_40,MDL_MM,ZERO,W(1,37))
 C     Amplitude(s) for diagram number 57
-      CALL FFV2_0(W(1,2),W(1,1),W(1,36),GC_100,AMP(57))
-      CALL FFV2_3(W(1,7),W(1,34),GC_100,MDL_MW,MDL_WW,W(1,36))
-      CALL FFV2_1(W(1,6),W(1,36),GC_100,ZERO,ZERO,W(1,35))
-      CALL FFV2_3(W(1,4),W(1,35),GC_100,MDL_MW,MDL_WW,W(1,37))
+      CALL FFV1_0(W(1,37),W(1,1),W(1,21),GC_3,AMP(57))
+      CALL FFV1_2(W(1,33),W(1,21),GC_3,MDL_ME,ZERO,W(1,37))
+      CALL FFV2_3(W(1,37),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,33))
 C     Amplitude(s) for diagram number 58
-      CALL FFV2_0(W(1,2),W(1,1),W(1,37),GC_100,AMP(58))
-      CALL FFV1P0_3(W(1,4),W(1,6),GC_3,ZERO,ZERO,W(1,37))
-      CALL FFV2_2(W(1,2),W(1,15),GC_100,MDL_MM,ZERO,W(1,35))
-      CALL FFV1_2(W(1,7),W(1,37),GC_3,MDL_ME,ZERO,W(1,38))
-      CALL FFV1P0_3(W(1,38),W(1,8),GC_3,ZERO,ZERO,W(1,39))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,33),GC_40,AMP(58))
+      CALL FFV2_3(W(1,22),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,33))
+      CALL FFV2_2(W(1,2),W(1,33),GC_40,MDL_MM,ZERO,W(1,37))
 C     Amplitude(s) for diagram number 59
-      CALL FFV1_0(W(1,35),W(1,1),W(1,39),GC_3,AMP(59))
-      CALL FFV1_1(W(1,8),W(1,37),GC_3,MDL_ME,ZERO,W(1,40))
-      CALL FFV1P0_3(W(1,7),W(1,40),GC_3,ZERO,ZERO,W(1,41))
+      CALL FFV1_0(W(1,37),W(1,1),W(1,35),GC_3,AMP(59))
+      CALL FFV1_2(W(1,22),W(1,35),GC_3,MDL_ME,ZERO,W(1,37))
+      CALL FFV2_3(W(1,37),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,35))
 C     Amplitude(s) for diagram number 60
-      CALL FFV1_0(W(1,35),W(1,1),W(1,41),GC_3,AMP(60))
-      CALL VVV1_2(W(1,37),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,42))
-      CALL FFV2_1(W(1,8),W(1,42),GC_100,ZERO,ZERO,W(1,43))
-      CALL FFV2_3(W(1,7),W(1,43),GC_100,MDL_MW,MDL_WW,W(1,44))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,35),GC_40,AMP(60))
+      CALL FFV1_2(W(1,7),W(1,49),GC_3,MDL_ME,ZERO,W(1,35))
+      CALL FFV2_3(W(1,35),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,49))
 C     Amplitude(s) for diagram number 61
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(61))
-      CALL FFV2_2(W(1,2),W(1,36),GC_100,MDL_MM,ZERO,W(1,44))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,49),GC_40,AMP(61))
+      CALL FFV1_2(W(1,4),W(1,12),GC_3,MDL_ME,ZERO,W(1,49))
+      CALL FFV2_3(W(1,49),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,12))
 C     Amplitude(s) for diagram number 62
-      CALL FFV1_0(W(1,44),W(1,1),W(1,37),GC_3,AMP(62))
-      CALL VVV1_2(W(1,37),W(1,36),-GC_3,MDL_MW,MDL_WW,W(1,44))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,12),GC_40,AMP(62))
+      CALL FFV1_2(W(1,7),W(1,8),GC_3,MDL_ME,ZERO,W(1,12))
+      CALL FFV2_3(W(1,12),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,8))
 C     Amplitude(s) for diagram number 63
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(63))
-      CALL FFV2_3(W(1,38),W(1,34),GC_100,MDL_MW,MDL_WW,W(1,44))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,8),GC_40,AMP(63))
+      CALL FFV1_2(W(1,4),W(1,14),GC_3,MDL_ME,ZERO,W(1,8))
+      CALL FFV2_3(W(1,8),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,14))
 C     Amplitude(s) for diagram number 64
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(64))
-      CALL VVV1_2(W(1,39),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,44))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,14),GC_40,AMP(64))
+      CALL FFV2_3(W(1,36),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,14))
+      CALL FFV2_2(W(1,2),W(1,14),GC_40,MDL_MM,ZERO,W(1,8))
 C     Amplitude(s) for diagram number 65
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(65))
-      CALL FFV2_1(W(1,40),W(1,15),GC_100,ZERO,ZERO,W(1,44))
-      CALL FFV2_3(W(1,7),W(1,44),GC_100,MDL_MW,MDL_WW,W(1,36))
+      CALL FFV1_0(W(1,8),W(1,1),W(1,15),GC_3,AMP(65))
+      CALL FFV1_2(W(1,36),W(1,15),GC_3,MDL_ME,ZERO,W(1,8))
+      CALL FFV2_3(W(1,8),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,36))
 C     Amplitude(s) for diagram number 66
-      CALL FFV2_0(W(1,2),W(1,1),W(1,36),GC_100,AMP(66))
-      CALL VVV1_2(W(1,41),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,36))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,36),GC_40,AMP(66))
+      CALL FFV2_3(W(1,24),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,36))
+      CALL FFV2_2(W(1,2),W(1,36),GC_40,MDL_MM,ZERO,W(1,8))
 C     Amplitude(s) for diagram number 67
-      CALL FFV2_0(W(1,2),W(1,1),W(1,36),GC_100,AMP(67))
-      CALL FFV1_2(W(1,35),W(1,37),GC_3,MDL_MM,ZERO,W(1,36))
+      CALL FFV1_0(W(1,8),W(1,1),W(1,10),GC_3,AMP(67))
+      CALL FFV1_2(W(1,24),W(1,10),GC_3,MDL_ME,ZERO,W(1,8))
+      CALL FFV2_3(W(1,8),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,24))
 C     Amplitude(s) for diagram number 68
-      CALL FFV1_0(W(1,36),W(1,1),W(1,16),GC_3,AMP(68))
-      CALL FFV1_2(W(1,35),W(1,16),GC_3,MDL_MM,ZERO,W(1,36))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,24),GC_40,AMP(68))
+      CALL FFV1_2(W(1,7),W(1,50),GC_3,MDL_ME,ZERO,W(1,24))
+      CALL FFV2_3(W(1,24),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,50))
 C     Amplitude(s) for diagram number 69
-      CALL FFV1_0(W(1,36),W(1,1),W(1,37),GC_3,AMP(69))
-      CALL FFV2_2(W(1,2),W(1,42),GC_100,MDL_MM,ZERO,W(1,36))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,50),GC_40,AMP(69))
+      CALL FFV1_2(W(1,7),W(1,6),GC_3,MDL_ME,ZERO,W(1,50))
+      CALL FFV2_3(W(1,50),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,6))
 C     Amplitude(s) for diagram number 70
-      CALL FFV1_0(W(1,36),W(1,1),W(1,16),GC_3,AMP(70))
-      CALL VVV1_2(W(1,16),W(1,42),-GC_3,MDL_MW,MDL_WW,W(1,36))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,6),GC_40,AMP(70))
+      CALL FFV1_2(W(1,4),W(1,18),GC_3,MDL_ME,ZERO,W(1,6))
+      CALL FFV2_3(W(1,6),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,18))
 C     Amplitude(s) for diagram number 71
-      CALL FFV2_0(W(1,2),W(1,1),W(1,36),GC_100,AMP(71))
-      CALL VVV1_2(W(1,16),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,36))
-      CALL FFV2_2(W(1,2),W(1,36),GC_100,MDL_MM,ZERO,W(1,42))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,18),GC_40,AMP(71))
+      CALL FFV1_2(W(1,4),W(1,20),GC_3,MDL_ME,ZERO,W(1,18))
+      CALL FFV2_3(W(1,18),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,20))
 C     Amplitude(s) for diagram number 72
-      CALL FFV1_0(W(1,42),W(1,1),W(1,37),GC_3,AMP(72))
-      CALL VVV1_2(W(1,37),W(1,36),-GC_3,MDL_MW,MDL_WW,W(1,42))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,20),GC_40,AMP(72))
+      CALL FFV2_3(W(1,13),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,20))
+      CALL FFV2_2(W(1,2),W(1,20),GC_40,MDL_MM,ZERO,W(1,18))
 C     Amplitude(s) for diagram number 73
-      CALL FFV2_0(W(1,2),W(1,1),W(1,42),GC_100,AMP(73))
-      CALL VVVV2_3(W(1,37),W(1,16),W(1,15),GC_5,MDL_MW,MDL_WW,W(1,42))
+      CALL FFV1_0(W(1,18),W(1,1),W(1,21),GC_3,AMP(73))
+      CALL FFV1_2(W(1,13),W(1,21),GC_3,MDL_ME,ZERO,W(1,18))
+      CALL FFV2_3(W(1,18),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,13))
 C     Amplitude(s) for diagram number 74
-      CALL FFV2_0(W(1,2),W(1,1),W(1,42),GC_100,AMP(74))
-      CALL FFV1P0_3(W(1,4),W(1,8),GC_3,ZERO,ZERO,W(1,42))
-      CALL FFV1_1(W(1,6),W(1,42),GC_3,MDL_ME,ZERO,W(1,44))
-      CALL FFV1P0_3(W(1,7),W(1,44),GC_3,ZERO,ZERO,W(1,43))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,13),GC_40,AMP(74))
+      CALL FFV2_3(W(1,40),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,13))
+      CALL FFV2_2(W(1,2),W(1,13),GC_40,MDL_MM,ZERO,W(1,18))
 C     Amplitude(s) for diagram number 75
-      CALL FFV1_0(W(1,35),W(1,1),W(1,43),GC_3,AMP(75))
-      CALL FFV1_2(W(1,7),W(1,42),GC_3,MDL_ME,ZERO,W(1,45))
-      CALL FFV1P0_3(W(1,45),W(1,6),GC_3,ZERO,ZERO,W(1,46))
+      CALL FFV1_0(W(1,18),W(1,1),W(1,16),GC_3,AMP(75))
+      CALL FFV1_2(W(1,40),W(1,16),GC_3,MDL_ME,ZERO,W(1,18))
+      CALL FFV2_3(W(1,18),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,40))
 C     Amplitude(s) for diagram number 76
-      CALL FFV1_0(W(1,35),W(1,1),W(1,46),GC_3,AMP(76))
-      CALL VVV1_2(W(1,42),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,47))
-      CALL FFV2_1(W(1,6),W(1,47),GC_100,ZERO,ZERO,W(1,48))
-      CALL FFV2_3(W(1,7),W(1,48),GC_100,MDL_MW,MDL_WW,W(1,49))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,40),GC_40,AMP(76))
+      CALL FFV1_2(W(1,5),W(1,41),GC_3,MDL_ME,ZERO,W(1,40))
+      CALL FFV2_3(W(1,40),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,41))
 C     Amplitude(s) for diagram number 77
-      CALL FFV2_0(W(1,2),W(1,1),W(1,49),GC_100,AMP(77))
-      CALL FFV2_2(W(1,2),W(1,11),GC_100,MDL_MM,ZERO,W(1,49))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,41),GC_40,AMP(77))
+      CALL FFV1_2(W(1,4),W(1,23),GC_3,MDL_ME,ZERO,W(1,41))
+      CALL FFV2_3(W(1,41),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,23))
 C     Amplitude(s) for diagram number 78
-      CALL FFV1_0(W(1,49),W(1,1),W(1,42),GC_3,AMP(78))
-      CALL VVV1_2(W(1,42),W(1,11),-GC_3,MDL_MW,MDL_WW,W(1,49))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,23),GC_40,AMP(78))
+      CALL FFV1_2(W(1,5),W(1,42),GC_3,MDL_ME,ZERO,W(1,23))
+      CALL FFV2_3(W(1,23),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,42))
 C     Amplitude(s) for diagram number 79
-      CALL FFV2_0(W(1,2),W(1,1),W(1,49),GC_100,AMP(79))
-      CALL FFV2_3(W(1,45),W(1,9),GC_100,MDL_MW,MDL_WW,W(1,49))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,42),GC_40,AMP(79))
+      CALL FFV1_2(W(1,4),W(1,25),GC_3,MDL_ME,ZERO,W(1,42))
+      CALL FFV2_3(W(1,42),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,25))
 C     Amplitude(s) for diagram number 80
-      CALL FFV2_0(W(1,2),W(1,1),W(1,49),GC_100,AMP(80))
-      CALL FFV2_1(W(1,44),W(1,15),GC_100,ZERO,ZERO,W(1,49))
-      CALL FFV2_3(W(1,7),W(1,49),GC_100,MDL_MW,MDL_WW,W(1,11))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,25),GC_40,AMP(80))
+      CALL FFV1_2(W(1,5),W(1,43),GC_3,MDL_ME,ZERO,W(1,25))
+      CALL FFV2_3(W(1,25),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,43))
 C     Amplitude(s) for diagram number 81
-      CALL FFV2_0(W(1,2),W(1,1),W(1,11),GC_100,AMP(81))
-      CALL VVV1_2(W(1,43),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,11))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,43),GC_40,AMP(81))
+      CALL FFV1_2(W(1,4),W(1,27),GC_3,MDL_ME,ZERO,W(1,43))
+      CALL FFV2_3(W(1,43),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,27))
 C     Amplitude(s) for diagram number 82
-      CALL FFV2_0(W(1,2),W(1,1),W(1,11),GC_100,AMP(82))
-      CALL VVV1_2(W(1,46),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,11))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,27),GC_40,AMP(82))
+      CALL FFV1_2(W(1,5),W(1,44),GC_3,MDL_ME,ZERO,W(1,27))
+      CALL FFV2_3(W(1,27),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,44))
 C     Amplitude(s) for diagram number 83
-      CALL FFV2_0(W(1,2),W(1,1),W(1,11),GC_100,AMP(83))
-      CALL FFV1_2(W(1,35),W(1,42),GC_3,MDL_MM,ZERO,W(1,11))
+      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_40,AMP(83))
+      CALL FFV1_2(W(1,4),W(1,29),GC_3,MDL_ME,ZERO,W(1,44))
+      CALL FFV2_3(W(1,44),W(1,3),GC_40,MDL_MW,MDL_WW,W(1,29))
 C     Amplitude(s) for diagram number 84
-      CALL FFV1_0(W(1,11),W(1,1),W(1,13),GC_3,AMP(84))
-      CALL FFV1_2(W(1,35),W(1,13),GC_3,MDL_MM,ZERO,W(1,11))
-C     Amplitude(s) for diagram number 85
-      CALL FFV1_0(W(1,11),W(1,1),W(1,42),GC_3,AMP(85))
-      CALL FFV2_2(W(1,2),W(1,47),GC_100,MDL_MM,ZERO,W(1,11))
-C     Amplitude(s) for diagram number 86
-      CALL FFV1_0(W(1,11),W(1,1),W(1,13),GC_3,AMP(86))
-      CALL VVV1_2(W(1,13),W(1,47),-GC_3,MDL_MW,MDL_WW,W(1,11))
-C     Amplitude(s) for diagram number 87
-      CALL FFV2_0(W(1,2),W(1,1),W(1,11),GC_100,AMP(87))
-      CALL VVV1_2(W(1,13),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,11))
-      CALL FFV2_2(W(1,2),W(1,11),GC_100,MDL_MM,ZERO,W(1,47))
-C     Amplitude(s) for diagram number 88
-      CALL FFV1_0(W(1,47),W(1,1),W(1,42),GC_3,AMP(88))
-      CALL VVV1_2(W(1,42),W(1,11),-GC_3,MDL_MW,MDL_WW,W(1,47))
-C     Amplitude(s) for diagram number 89
-      CALL FFV2_0(W(1,2),W(1,1),W(1,47),GC_100,AMP(89))
-      CALL VVVV2_3(W(1,42),W(1,13),W(1,15),GC_5,MDL_MW,MDL_WW,W(1,47))
-C     Amplitude(s) for diagram number 90
-      CALL FFV2_0(W(1,2),W(1,1),W(1,47),GC_100,AMP(90))
-      CALL FFV1_2(W(1,4),W(1,13),GC_3,MDL_ME,ZERO,W(1,47))
-      CALL FFV1P0_3(W(1,47),W(1,8),GC_3,ZERO,ZERO,W(1,49))
-C     Amplitude(s) for diagram number 91
-      CALL FFV1_0(W(1,35),W(1,1),W(1,49),GC_3,AMP(91))
-      CALL FFV1P0_3(W(1,4),W(1,31),GC_3,ZERO,ZERO,W(1,48))
-C     Amplitude(s) for diagram number 92
-      CALL FFV1_0(W(1,35),W(1,1),W(1,48),GC_3,AMP(92))
-      CALL FFV2_1(W(1,8),W(1,11),GC_100,ZERO,ZERO,W(1,50))
-      CALL FFV2_3(W(1,4),W(1,50),GC_100,MDL_MW,MDL_WW,W(1,11))
-C     Amplitude(s) for diagram number 93
-      CALL FFV2_0(W(1,2),W(1,1),W(1,11),GC_100,AMP(93))
-      CALL FFV2_2(W(1,2),W(1,10),GC_100,MDL_MM,ZERO,W(1,11))
-C     Amplitude(s) for diagram number 94
-      CALL FFV1_0(W(1,11),W(1,1),W(1,13),GC_3,AMP(94))
-      CALL VVV1_2(W(1,13),W(1,10),-GC_3,MDL_MW,MDL_WW,W(1,11))
-C     Amplitude(s) for diagram number 95
-      CALL FFV2_0(W(1,2),W(1,1),W(1,11),GC_100,AMP(95))
-      CALL FFV2_3(W(1,47),W(1,34),GC_100,MDL_MW,MDL_WW,W(1,11))
-C     Amplitude(s) for diagram number 96
-      CALL FFV2_0(W(1,2),W(1,1),W(1,11),GC_100,AMP(96))
-      CALL VVV1_2(W(1,49),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,11))
-C     Amplitude(s) for diagram number 97
-      CALL FFV2_0(W(1,2),W(1,1),W(1,11),GC_100,AMP(97))
-      CALL FFV2_1(W(1,31),W(1,15),GC_100,ZERO,ZERO,W(1,11))
-      CALL FFV2_3(W(1,4),W(1,11),GC_100,MDL_MW,MDL_WW,W(1,31))
-C     Amplitude(s) for diagram number 98
-      CALL FFV2_0(W(1,2),W(1,1),W(1,31),GC_100,AMP(98))
-      CALL VVV1_2(W(1,48),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,31))
-C     Amplitude(s) for diagram number 99
-      CALL FFV2_0(W(1,2),W(1,1),W(1,31),GC_100,AMP(99))
-      CALL FFV1_2(W(1,4),W(1,16),GC_3,MDL_ME,ZERO,W(1,31))
-      CALL FFV1P0_3(W(1,31),W(1,6),GC_3,ZERO,ZERO,W(1,11))
-C     Amplitude(s) for diagram number 100
-      CALL FFV1_0(W(1,35),W(1,1),W(1,11),GC_3,AMP(100))
-      CALL FFV1P0_3(W(1,4),W(1,12),GC_3,ZERO,ZERO,W(1,34))
-C     Amplitude(s) for diagram number 101
-      CALL FFV1_0(W(1,35),W(1,1),W(1,34),GC_3,AMP(101))
-      CALL FFV2_2(W(1,2),W(1,24),GC_100,MDL_MM,ZERO,W(1,35))
-C     Amplitude(s) for diagram number 102
-      CALL FFV1_0(W(1,35),W(1,1),W(1,16),GC_3,AMP(102))
-      CALL VVV1_2(W(1,16),W(1,24),-GC_3,MDL_MW,MDL_WW,W(1,35))
-C     Amplitude(s) for diagram number 103
-      CALL FFV2_0(W(1,2),W(1,1),W(1,35),GC_100,AMP(103))
-      CALL FFV2_3(W(1,31),W(1,9),GC_100,MDL_MW,MDL_WW,W(1,35))
-C     Amplitude(s) for diagram number 104
-      CALL FFV2_0(W(1,2),W(1,1),W(1,35),GC_100,AMP(104))
-      CALL FFV2_1(W(1,6),W(1,36),GC_100,ZERO,ZERO,W(1,35))
-      CALL FFV2_3(W(1,4),W(1,35),GC_100,MDL_MW,MDL_WW,W(1,36))
-C     Amplitude(s) for diagram number 105
-      CALL FFV2_0(W(1,2),W(1,1),W(1,36),GC_100,AMP(105))
-      CALL VVV1_2(W(1,11),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,36))
-C     Amplitude(s) for diagram number 106
-      CALL FFV2_0(W(1,2),W(1,1),W(1,36),GC_100,AMP(106))
-      CALL FFV2_1(W(1,12),W(1,15),GC_100,ZERO,ZERO,W(1,36))
-      CALL FFV2_3(W(1,4),W(1,36),GC_100,MDL_MW,MDL_WW,W(1,12))
-C     Amplitude(s) for diagram number 107
-      CALL FFV2_0(W(1,2),W(1,1),W(1,12),GC_100,AMP(107))
-      CALL VVV1_2(W(1,34),W(1,15),-GC_3,MDL_MW,MDL_WW,W(1,12))
-C     Amplitude(s) for diagram number 108
-      CALL FFV2_0(W(1,2),W(1,1),W(1,12),GC_100,AMP(108))
-      CALL FFV2_3(W(1,7),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,12))
-      CALL FFV2_1(W(1,6),W(1,12),GC_100,ZERO,ZERO,W(1,15))
-      CALL FFV2_3(W(1,4),W(1,15),GC_100,MDL_MW,MDL_WW,W(1,36))
-      CALL FFV2_1(W(1,8),W(1,36),GC_100,ZERO,ZERO,W(1,35))
-      CALL FFV2_3(W(1,5),W(1,35),GC_100,MDL_MW,MDL_WW,W(1,9))
-C     Amplitude(s) for diagram number 109
-      CALL FFV2_0(W(1,2),W(1,1),W(1,9),GC_100,AMP(109))
-      CALL FFV2_3(W(1,5),W(1,15),GC_100,MDL_MW,MDL_WW,W(1,9))
-      CALL FFV2_1(W(1,8),W(1,9),GC_100,ZERO,ZERO,W(1,35))
-      CALL FFV2_3(W(1,4),W(1,35),GC_100,MDL_MW,MDL_WW,W(1,24))
-C     Amplitude(s) for diagram number 110
-      CALL FFV2_0(W(1,2),W(1,1),W(1,24),GC_100,AMP(110))
-      CALL FFV2_1(W(1,8),W(1,12),GC_100,ZERO,ZERO,W(1,24))
-      CALL FFV2_3(W(1,4),W(1,24),GC_100,MDL_MW,MDL_WW,W(1,35))
-      CALL FFV2_1(W(1,6),W(1,35),GC_100,ZERO,ZERO,W(1,10))
-      CALL FFV2_3(W(1,5),W(1,10),GC_100,MDL_MW,MDL_WW,W(1,50))
-C     Amplitude(s) for diagram number 111
-      CALL FFV2_0(W(1,2),W(1,1),W(1,50),GC_100,AMP(111))
-      CALL FFV2_3(W(1,5),W(1,24),GC_100,MDL_MW,MDL_WW,W(1,50))
-      CALL FFV2_1(W(1,6),W(1,50),GC_100,ZERO,ZERO,W(1,10))
-      CALL FFV2_3(W(1,4),W(1,10),GC_100,MDL_MW,MDL_WW,W(1,51))
-C     Amplitude(s) for diagram number 112
-      CALL FFV2_0(W(1,2),W(1,1),W(1,51),GC_100,AMP(112))
-      CALL FFV2_2(W(1,2),W(1,12),GC_100,MDL_MM,ZERO,W(1,51))
-      CALL FFV1_2(W(1,5),W(1,37),GC_3,MDL_ME,ZERO,W(1,10))
-      CALL FFV1P0_3(W(1,10),W(1,8),GC_3,ZERO,ZERO,W(1,52))
-C     Amplitude(s) for diagram number 113
-      CALL FFV1_0(W(1,51),W(1,1),W(1,52),GC_3,AMP(113))
-      CALL FFV1P0_3(W(1,5),W(1,40),GC_3,ZERO,ZERO,W(1,53))
-C     Amplitude(s) for diagram number 114
-      CALL FFV1_0(W(1,51),W(1,1),W(1,53),GC_3,AMP(114))
-      CALL VVV1_2(W(1,37),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,54))
-      CALL FFV2_1(W(1,8),W(1,54),GC_100,ZERO,ZERO,W(1,55))
-      CALL FFV2_3(W(1,5),W(1,55),GC_100,MDL_MW,MDL_WW,W(1,56))
-C     Amplitude(s) for diagram number 115
-      CALL FFV2_0(W(1,2),W(1,1),W(1,56),GC_100,AMP(115))
-      CALL FFV2_2(W(1,2),W(1,50),GC_100,MDL_MM,ZERO,W(1,56))
-C     Amplitude(s) for diagram number 116
-      CALL FFV1_0(W(1,56),W(1,1),W(1,37),GC_3,AMP(116))
-      CALL VVV1_2(W(1,37),W(1,50),-GC_3,MDL_MW,MDL_WW,W(1,56))
-C     Amplitude(s) for diagram number 117
-      CALL FFV2_0(W(1,2),W(1,1),W(1,56),GC_100,AMP(117))
-      CALL FFV2_3(W(1,10),W(1,24),GC_100,MDL_MW,MDL_WW,W(1,56))
-C     Amplitude(s) for diagram number 118
-      CALL FFV2_0(W(1,2),W(1,1),W(1,56),GC_100,AMP(118))
-      CALL VVV1_2(W(1,52),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,56))
-C     Amplitude(s) for diagram number 119
-      CALL FFV2_0(W(1,2),W(1,1),W(1,56),GC_100,AMP(119))
-      CALL FFV2_1(W(1,40),W(1,12),GC_100,ZERO,ZERO,W(1,56))
-      CALL FFV2_3(W(1,5),W(1,56),GC_100,MDL_MW,MDL_WW,W(1,40))
-C     Amplitude(s) for diagram number 120
-      CALL FFV2_0(W(1,2),W(1,1),W(1,40),GC_100,AMP(120))
-      CALL VVV1_2(W(1,53),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,40))
-C     Amplitude(s) for diagram number 121
-      CALL FFV2_0(W(1,2),W(1,1),W(1,40),GC_100,AMP(121))
-      CALL FFV1_2(W(1,51),W(1,37),GC_3,MDL_MM,ZERO,W(1,40))
-C     Amplitude(s) for diagram number 122
-      CALL FFV1_0(W(1,40),W(1,1),W(1,22),GC_3,AMP(122))
-      CALL FFV1_2(W(1,51),W(1,22),GC_3,MDL_MM,ZERO,W(1,40))
-C     Amplitude(s) for diagram number 123
-      CALL FFV1_0(W(1,40),W(1,1),W(1,37),GC_3,AMP(123))
-      CALL FFV2_2(W(1,2),W(1,54),GC_100,MDL_MM,ZERO,W(1,40))
-C     Amplitude(s) for diagram number 124
-      CALL FFV1_0(W(1,40),W(1,1),W(1,22),GC_3,AMP(124))
-      CALL VVV1_2(W(1,22),W(1,54),-GC_3,MDL_MW,MDL_WW,W(1,40))
-C     Amplitude(s) for diagram number 125
-      CALL FFV2_0(W(1,2),W(1,1),W(1,40),GC_100,AMP(125))
-      CALL VVV1_2(W(1,22),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,40))
-      CALL FFV2_2(W(1,2),W(1,40),GC_100,MDL_MM,ZERO,W(1,54))
-C     Amplitude(s) for diagram number 126
-      CALL FFV1_0(W(1,54),W(1,1),W(1,37),GC_3,AMP(126))
-      CALL VVV1_2(W(1,37),W(1,40),-GC_3,MDL_MW,MDL_WW,W(1,54))
-C     Amplitude(s) for diagram number 127
-      CALL FFV2_0(W(1,2),W(1,1),W(1,54),GC_100,AMP(127))
-      CALL VVVV2_3(W(1,37),W(1,22),W(1,12),GC_5,MDL_MW,MDL_WW,W(1,54))
-C     Amplitude(s) for diagram number 128
-      CALL FFV2_0(W(1,2),W(1,1),W(1,54),GC_100,AMP(128))
-      CALL FFV1_2(W(1,5),W(1,42),GC_3,MDL_ME,ZERO,W(1,54))
-      CALL FFV1P0_3(W(1,54),W(1,6),GC_3,ZERO,ZERO,W(1,56))
-C     Amplitude(s) for diagram number 129
-      CALL FFV1_0(W(1,51),W(1,1),W(1,56),GC_3,AMP(129))
-      CALL FFV1P0_3(W(1,5),W(1,44),GC_3,ZERO,ZERO,W(1,50))
-C     Amplitude(s) for diagram number 130
-      CALL FFV1_0(W(1,51),W(1,1),W(1,50),GC_3,AMP(130))
-      CALL VVV1_2(W(1,42),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,55))
-      CALL FFV2_1(W(1,6),W(1,55),GC_100,ZERO,ZERO,W(1,57))
-      CALL FFV2_3(W(1,5),W(1,57),GC_100,MDL_MW,MDL_WW,W(1,58))
-C     Amplitude(s) for diagram number 131
-      CALL FFV2_0(W(1,2),W(1,1),W(1,58),GC_100,AMP(131))
-      CALL FFV2_2(W(1,2),W(1,9),GC_100,MDL_MM,ZERO,W(1,58))
-C     Amplitude(s) for diagram number 132
-      CALL FFV1_0(W(1,58),W(1,1),W(1,42),GC_3,AMP(132))
-      CALL VVV1_2(W(1,42),W(1,9),-GC_3,MDL_MW,MDL_WW,W(1,58))
-C     Amplitude(s) for diagram number 133
-      CALL FFV2_0(W(1,2),W(1,1),W(1,58),GC_100,AMP(133))
-      CALL FFV2_3(W(1,54),W(1,15),GC_100,MDL_MW,MDL_WW,W(1,58))
-C     Amplitude(s) for diagram number 134
-      CALL FFV2_0(W(1,2),W(1,1),W(1,58),GC_100,AMP(134))
-      CALL VVV1_2(W(1,56),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,58))
-C     Amplitude(s) for diagram number 135
-      CALL FFV2_0(W(1,2),W(1,1),W(1,58),GC_100,AMP(135))
-      CALL FFV2_1(W(1,44),W(1,12),GC_100,ZERO,ZERO,W(1,58))
-      CALL FFV2_3(W(1,5),W(1,58),GC_100,MDL_MW,MDL_WW,W(1,44))
-C     Amplitude(s) for diagram number 136
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(136))
-      CALL VVV1_2(W(1,50),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,44))
-C     Amplitude(s) for diagram number 137
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(137))
-      CALL FFV1_2(W(1,51),W(1,42),GC_3,MDL_MM,ZERO,W(1,44))
-C     Amplitude(s) for diagram number 138
-      CALL FFV1_0(W(1,44),W(1,1),W(1,17),GC_3,AMP(138))
-      CALL FFV1_2(W(1,51),W(1,17),GC_3,MDL_MM,ZERO,W(1,44))
-C     Amplitude(s) for diagram number 139
-      CALL FFV1_0(W(1,44),W(1,1),W(1,42),GC_3,AMP(139))
-      CALL FFV2_2(W(1,2),W(1,55),GC_100,MDL_MM,ZERO,W(1,44))
-C     Amplitude(s) for diagram number 140
-      CALL FFV1_0(W(1,44),W(1,1),W(1,17),GC_3,AMP(140))
-      CALL VVV1_2(W(1,17),W(1,55),-GC_3,MDL_MW,MDL_WW,W(1,44))
-C     Amplitude(s) for diagram number 141
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(141))
-      CALL VVV1_2(W(1,17),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,44))
-      CALL FFV2_2(W(1,2),W(1,44),GC_100,MDL_MM,ZERO,W(1,55))
-C     Amplitude(s) for diagram number 142
-      CALL FFV1_0(W(1,55),W(1,1),W(1,42),GC_3,AMP(142))
-      CALL VVV1_2(W(1,42),W(1,44),-GC_3,MDL_MW,MDL_WW,W(1,55))
-C     Amplitude(s) for diagram number 143
-      CALL FFV2_0(W(1,2),W(1,1),W(1,55),GC_100,AMP(143))
-      CALL VVVV2_3(W(1,42),W(1,17),W(1,12),GC_5,MDL_MW,MDL_WW,W(1,55))
-C     Amplitude(s) for diagram number 144
-      CALL FFV2_0(W(1,2),W(1,1),W(1,55),GC_100,AMP(144))
-      CALL FFV1_2(W(1,4),W(1,17),GC_3,MDL_ME,ZERO,W(1,55))
-      CALL FFV1P0_3(W(1,55),W(1,8),GC_3,ZERO,ZERO,W(1,58))
-C     Amplitude(s) for diagram number 145
-      CALL FFV1_0(W(1,51),W(1,1),W(1,58),GC_3,AMP(145))
-      CALL FFV1P0_3(W(1,4),W(1,20),GC_3,ZERO,ZERO,W(1,9))
-C     Amplitude(s) for diagram number 146
-      CALL FFV1_0(W(1,51),W(1,1),W(1,9),GC_3,AMP(146))
-      CALL FFV2_1(W(1,8),W(1,44),GC_100,ZERO,ZERO,W(1,57))
-      CALL FFV2_3(W(1,4),W(1,57),GC_100,MDL_MW,MDL_WW,W(1,44))
-C     Amplitude(s) for diagram number 147
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(147))
-      CALL FFV2_2(W(1,2),W(1,35),GC_100,MDL_MM,ZERO,W(1,44))
-C     Amplitude(s) for diagram number 148
-      CALL FFV1_0(W(1,44),W(1,1),W(1,17),GC_3,AMP(148))
-      CALL VVV1_2(W(1,17),W(1,35),-GC_3,MDL_MW,MDL_WW,W(1,44))
-C     Amplitude(s) for diagram number 149
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(149))
-      CALL FFV2_3(W(1,55),W(1,24),GC_100,MDL_MW,MDL_WW,W(1,44))
-C     Amplitude(s) for diagram number 150
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(150))
-      CALL VVV1_2(W(1,58),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,44))
-C     Amplitude(s) for diagram number 151
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(151))
-      CALL FFV2_1(W(1,20),W(1,12),GC_100,ZERO,ZERO,W(1,44))
-      CALL FFV2_3(W(1,4),W(1,44),GC_100,MDL_MW,MDL_WW,W(1,20))
-C     Amplitude(s) for diagram number 152
-      CALL FFV2_0(W(1,2),W(1,1),W(1,20),GC_100,AMP(152))
-      CALL VVV1_2(W(1,9),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,20))
-C     Amplitude(s) for diagram number 153
-      CALL FFV2_0(W(1,2),W(1,1),W(1,20),GC_100,AMP(153))
-      CALL FFV1_2(W(1,4),W(1,22),GC_3,MDL_ME,ZERO,W(1,20))
-      CALL FFV1P0_3(W(1,20),W(1,6),GC_3,ZERO,ZERO,W(1,44))
-C     Amplitude(s) for diagram number 154
-      CALL FFV1_0(W(1,51),W(1,1),W(1,44),GC_3,AMP(154))
-      CALL FFV1P0_3(W(1,4),W(1,23),GC_3,ZERO,ZERO,W(1,24))
-C     Amplitude(s) for diagram number 155
-      CALL FFV1_0(W(1,51),W(1,1),W(1,24),GC_3,AMP(155))
-      CALL FFV2_1(W(1,6),W(1,40),GC_100,ZERO,ZERO,W(1,51))
-      CALL FFV2_3(W(1,4),W(1,51),GC_100,MDL_MW,MDL_WW,W(1,40))
-C     Amplitude(s) for diagram number 156
-      CALL FFV2_0(W(1,2),W(1,1),W(1,40),GC_100,AMP(156))
-      CALL FFV2_2(W(1,2),W(1,36),GC_100,MDL_MM,ZERO,W(1,40))
-C     Amplitude(s) for diagram number 157
-      CALL FFV1_0(W(1,40),W(1,1),W(1,22),GC_3,AMP(157))
-      CALL VVV1_2(W(1,22),W(1,36),-GC_3,MDL_MW,MDL_WW,W(1,40))
-C     Amplitude(s) for diagram number 158
-      CALL FFV2_0(W(1,2),W(1,1),W(1,40),GC_100,AMP(158))
-      CALL FFV2_3(W(1,20),W(1,15),GC_100,MDL_MW,MDL_WW,W(1,40))
-C     Amplitude(s) for diagram number 159
-      CALL FFV2_0(W(1,2),W(1,1),W(1,40),GC_100,AMP(159))
-      CALL VVV1_2(W(1,44),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,40))
-C     Amplitude(s) for diagram number 160
-      CALL FFV2_0(W(1,2),W(1,1),W(1,40),GC_100,AMP(160))
-      CALL FFV2_1(W(1,23),W(1,12),GC_100,ZERO,ZERO,W(1,40))
-      CALL FFV2_3(W(1,4),W(1,40),GC_100,MDL_MW,MDL_WW,W(1,23))
-C     Amplitude(s) for diagram number 161
-      CALL FFV2_0(W(1,2),W(1,1),W(1,23),GC_100,AMP(161))
-      CALL VVV1_2(W(1,24),W(1,12),-GC_3,MDL_MW,MDL_WW,W(1,23))
-C     Amplitude(s) for diagram number 162
-      CALL FFV2_0(W(1,2),W(1,1),W(1,23),GC_100,AMP(162))
-      CALL FFV2_3(W(1,10),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,23))
-      CALL FFV2_1(W(1,8),W(1,23),GC_100,ZERO,ZERO,W(1,12))
-      CALL FFV2_3(W(1,7),W(1,12),GC_100,MDL_MW,MDL_WW,W(1,40))
-C     Amplitude(s) for diagram number 163
-      CALL FFV2_0(W(1,2),W(1,1),W(1,40),GC_100,AMP(163))
-      CALL FFV1_2(W(1,7),W(1,52),GC_3,MDL_ME,ZERO,W(1,40))
-      CALL FFV2_3(W(1,40),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,52))
-C     Amplitude(s) for diagram number 164
-      CALL FFV2_0(W(1,2),W(1,1),W(1,52),GC_100,AMP(164))
-      CALL FFV2_3(W(1,38),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,52))
-      CALL FFV2_1(W(1,8),W(1,52),GC_100,ZERO,ZERO,W(1,40))
-      CALL FFV2_3(W(1,5),W(1,40),GC_100,MDL_MW,MDL_WW,W(1,12))
-C     Amplitude(s) for diagram number 165
-      CALL FFV2_0(W(1,2),W(1,1),W(1,12),GC_100,AMP(165))
-      CALL FFV1_2(W(1,5),W(1,39),GC_3,MDL_ME,ZERO,W(1,12))
-      CALL FFV2_3(W(1,12),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,39))
-C     Amplitude(s) for diagram number 166
-      CALL FFV2_0(W(1,2),W(1,1),W(1,39),GC_100,AMP(166))
-      CALL FFV1_2(W(1,7),W(1,53),GC_3,MDL_ME,ZERO,W(1,39))
-      CALL FFV2_3(W(1,39),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,53))
-C     Amplitude(s) for diagram number 167
-      CALL FFV2_0(W(1,2),W(1,1),W(1,53),GC_100,AMP(167))
-      CALL FFV1_2(W(1,5),W(1,41),GC_3,MDL_ME,ZERO,W(1,53))
-      CALL FFV2_3(W(1,53),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,41))
-C     Amplitude(s) for diagram number 168
-      CALL FFV2_0(W(1,2),W(1,1),W(1,41),GC_100,AMP(168))
-      CALL FFV2_2(W(1,2),W(1,52),GC_100,MDL_MM,ZERO,W(1,41))
-C     Amplitude(s) for diagram number 169
-      CALL FFV1_0(W(1,41),W(1,1),W(1,22),GC_3,AMP(169))
-      CALL VVV1_2(W(1,22),W(1,52),-GC_3,MDL_MW,MDL_WW,W(1,41))
-C     Amplitude(s) for diagram number 170
-      CALL FFV2_0(W(1,2),W(1,1),W(1,41),GC_100,AMP(170))
-      CALL FFV1_2(W(1,38),W(1,22),GC_3,MDL_ME,ZERO,W(1,41))
-      CALL FFV2_3(W(1,41),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,38))
-C     Amplitude(s) for diagram number 171
-      CALL FFV2_0(W(1,2),W(1,1),W(1,38),GC_100,AMP(171))
-      CALL FFV2_3(W(1,26),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,38))
-      CALL FFV2_2(W(1,2),W(1,38),GC_100,MDL_MM,ZERO,W(1,41))
-C     Amplitude(s) for diagram number 172
-      CALL FFV1_0(W(1,41),W(1,1),W(1,37),GC_3,AMP(172))
-      CALL VVV1_2(W(1,37),W(1,38),-GC_3,MDL_MW,MDL_WW,W(1,41))
-C     Amplitude(s) for diagram number 173
-      CALL FFV2_0(W(1,2),W(1,1),W(1,41),GC_100,AMP(173))
-      CALL FFV1_2(W(1,26),W(1,37),GC_3,MDL_ME,ZERO,W(1,41))
-      CALL FFV2_3(W(1,41),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,26))
-C     Amplitude(s) for diagram number 174
-      CALL FFV2_0(W(1,2),W(1,1),W(1,26),GC_100,AMP(174))
-      CALL FFV2_2(W(1,2),W(1,23),GC_100,MDL_MM,ZERO,W(1,26))
-C     Amplitude(s) for diagram number 175
-      CALL FFV1_0(W(1,26),W(1,1),W(1,16),GC_3,AMP(175))
-      CALL VVV1_2(W(1,16),W(1,23),-GC_3,MDL_MW,MDL_WW,W(1,26))
-C     Amplitude(s) for diagram number 176
-      CALL FFV2_0(W(1,2),W(1,1),W(1,26),GC_100,AMP(176))
-      CALL FFV1_2(W(1,10),W(1,16),GC_3,MDL_ME,ZERO,W(1,26))
-      CALL FFV2_3(W(1,26),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,10))
-C     Amplitude(s) for diagram number 177
-      CALL FFV2_0(W(1,2),W(1,1),W(1,10),GC_100,AMP(177))
-      CALL FFV2_3(W(1,14),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,10))
-      CALL FFV2_2(W(1,2),W(1,10),GC_100,MDL_MM,ZERO,W(1,26))
-C     Amplitude(s) for diagram number 178
-      CALL FFV1_0(W(1,26),W(1,1),W(1,37),GC_3,AMP(178))
-      CALL VVV1_2(W(1,37),W(1,10),-GC_3,MDL_MW,MDL_WW,W(1,26))
-C     Amplitude(s) for diagram number 179
-      CALL FFV2_0(W(1,2),W(1,1),W(1,26),GC_100,AMP(179))
-      CALL FFV1_2(W(1,14),W(1,37),GC_3,MDL_ME,ZERO,W(1,26))
-      CALL FFV2_3(W(1,26),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,37))
-C     Amplitude(s) for diagram number 180
-      CALL FFV2_0(W(1,2),W(1,1),W(1,37),GC_100,AMP(180))
-      CALL FFV2_3(W(1,54),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,37))
-      CALL FFV2_1(W(1,6),W(1,37),GC_100,ZERO,ZERO,W(1,26))
-      CALL FFV2_3(W(1,7),W(1,26),GC_100,MDL_MW,MDL_WW,W(1,14))
-C     Amplitude(s) for diagram number 181
-      CALL FFV2_0(W(1,2),W(1,1),W(1,14),GC_100,AMP(181))
-      CALL FFV1_2(W(1,7),W(1,56),GC_3,MDL_ME,ZERO,W(1,14))
-      CALL FFV2_3(W(1,14),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,56))
-C     Amplitude(s) for diagram number 182
-      CALL FFV2_0(W(1,2),W(1,1),W(1,56),GC_100,AMP(182))
-      CALL FFV1_2(W(1,7),W(1,50),GC_3,MDL_ME,ZERO,W(1,56))
-      CALL FFV2_3(W(1,56),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,50))
-C     Amplitude(s) for diagram number 183
-      CALL FFV2_0(W(1,2),W(1,1),W(1,50),GC_100,AMP(183))
-      CALL FFV1_2(W(1,5),W(1,43),GC_3,MDL_ME,ZERO,W(1,50))
-      CALL FFV2_3(W(1,50),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,43))
-C     Amplitude(s) for diagram number 184
-      CALL FFV2_0(W(1,2),W(1,1),W(1,43),GC_100,AMP(184))
-      CALL FFV2_3(W(1,45),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,43))
-      CALL FFV2_1(W(1,6),W(1,43),GC_100,ZERO,ZERO,W(1,50))
-      CALL FFV2_3(W(1,5),W(1,50),GC_100,MDL_MW,MDL_WW,W(1,56))
-C     Amplitude(s) for diagram number 185
-      CALL FFV2_0(W(1,2),W(1,1),W(1,56),GC_100,AMP(185))
-      CALL FFV1_2(W(1,5),W(1,46),GC_3,MDL_ME,ZERO,W(1,56))
-      CALL FFV2_3(W(1,56),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,46))
-C     Amplitude(s) for diagram number 186
-      CALL FFV2_0(W(1,2),W(1,1),W(1,46),GC_100,AMP(186))
-      CALL FFV2_2(W(1,2),W(1,43),GC_100,MDL_MM,ZERO,W(1,46))
-C     Amplitude(s) for diagram number 187
-      CALL FFV1_0(W(1,46),W(1,1),W(1,17),GC_3,AMP(187))
-      CALL VVV1_2(W(1,17),W(1,43),-GC_3,MDL_MW,MDL_WW,W(1,46))
-C     Amplitude(s) for diagram number 188
-      CALL FFV2_0(W(1,2),W(1,1),W(1,46),GC_100,AMP(188))
-      CALL FFV1_2(W(1,45),W(1,17),GC_3,MDL_ME,ZERO,W(1,46))
-      CALL FFV2_3(W(1,46),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,45))
-C     Amplitude(s) for diagram number 189
-      CALL FFV2_0(W(1,2),W(1,1),W(1,45),GC_100,AMP(189))
-      CALL FFV2_3(W(1,18),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,45))
-      CALL FFV2_2(W(1,2),W(1,45),GC_100,MDL_MM,ZERO,W(1,46))
-C     Amplitude(s) for diagram number 190
-      CALL FFV1_0(W(1,46),W(1,1),W(1,42),GC_3,AMP(190))
-      CALL VVV1_2(W(1,42),W(1,45),-GC_3,MDL_MW,MDL_WW,W(1,46))
-C     Amplitude(s) for diagram number 191
-      CALL FFV2_0(W(1,2),W(1,1),W(1,46),GC_100,AMP(191))
-      CALL FFV1_2(W(1,18),W(1,42),GC_3,MDL_ME,ZERO,W(1,46))
-      CALL FFV2_3(W(1,46),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,18))
-C     Amplitude(s) for diagram number 192
-      CALL FFV2_0(W(1,2),W(1,1),W(1,18),GC_100,AMP(192))
-      CALL FFV2_2(W(1,2),W(1,37),GC_100,MDL_MM,ZERO,W(1,18))
-C     Amplitude(s) for diagram number 193
-      CALL FFV1_0(W(1,18),W(1,1),W(1,13),GC_3,AMP(193))
-      CALL VVV1_2(W(1,13),W(1,37),-GC_3,MDL_MW,MDL_WW,W(1,18))
-C     Amplitude(s) for diagram number 194
-      CALL FFV2_0(W(1,2),W(1,1),W(1,18),GC_100,AMP(194))
-      CALL FFV1_2(W(1,54),W(1,13),GC_3,MDL_ME,ZERO,W(1,18))
-      CALL FFV2_3(W(1,18),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,54))
-C     Amplitude(s) for diagram number 195
-      CALL FFV2_0(W(1,2),W(1,1),W(1,54),GC_100,AMP(195))
-      CALL FFV2_3(W(1,28),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,54))
-      CALL FFV2_2(W(1,2),W(1,54),GC_100,MDL_MM,ZERO,W(1,18))
-C     Amplitude(s) for diagram number 196
-      CALL FFV1_0(W(1,18),W(1,1),W(1,42),GC_3,AMP(196))
-      CALL VVV1_2(W(1,42),W(1,54),-GC_3,MDL_MW,MDL_WW,W(1,18))
-C     Amplitude(s) for diagram number 197
-      CALL FFV2_0(W(1,2),W(1,1),W(1,18),GC_100,AMP(197))
-      CALL FFV1_2(W(1,28),W(1,42),GC_3,MDL_ME,ZERO,W(1,18))
-      CALL FFV2_3(W(1,18),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,42))
-C     Amplitude(s) for diagram number 198
-      CALL FFV2_0(W(1,2),W(1,1),W(1,42),GC_100,AMP(198))
-      CALL FFV2_3(W(1,55),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,42))
-      CALL FFV2_1(W(1,8),W(1,42),GC_100,ZERO,ZERO,W(1,18))
-      CALL FFV2_3(W(1,7),W(1,18),GC_100,MDL_MW,MDL_WW,W(1,28))
-C     Amplitude(s) for diagram number 199
-      CALL FFV2_0(W(1,2),W(1,1),W(1,28),GC_100,AMP(199))
-      CALL FFV1_2(W(1,7),W(1,58),GC_3,MDL_ME,ZERO,W(1,28))
-      CALL FFV2_3(W(1,28),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,58))
-C     Amplitude(s) for diagram number 200
-      CALL FFV2_0(W(1,2),W(1,1),W(1,58),GC_100,AMP(200))
-      CALL FFV2_1(W(1,8),W(1,45),GC_100,ZERO,ZERO,W(1,58))
-      CALL FFV2_3(W(1,4),W(1,58),GC_100,MDL_MW,MDL_WW,W(1,45))
-C     Amplitude(s) for diagram number 201
-      CALL FFV2_0(W(1,2),W(1,1),W(1,45),GC_100,AMP(201))
-      CALL FFV1_2(W(1,4),W(1,19),GC_3,MDL_ME,ZERO,W(1,45))
-      CALL FFV2_3(W(1,45),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,19))
-C     Amplitude(s) for diagram number 202
-      CALL FFV2_0(W(1,2),W(1,1),W(1,19),GC_100,AMP(202))
-      CALL FFV1_2(W(1,7),W(1,9),GC_3,MDL_ME,ZERO,W(1,19))
-      CALL FFV2_3(W(1,19),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,9))
-C     Amplitude(s) for diagram number 203
-      CALL FFV2_0(W(1,2),W(1,1),W(1,9),GC_100,AMP(203))
-      CALL FFV1_2(W(1,4),W(1,21),GC_3,MDL_ME,ZERO,W(1,9))
-      CALL FFV2_3(W(1,9),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,21))
-C     Amplitude(s) for diagram number 204
-      CALL FFV2_0(W(1,2),W(1,1),W(1,21),GC_100,AMP(204))
-      CALL FFV2_2(W(1,2),W(1,42),GC_100,MDL_MM,ZERO,W(1,21))
-C     Amplitude(s) for diagram number 205
-      CALL FFV1_0(W(1,21),W(1,1),W(1,16),GC_3,AMP(205))
-      CALL VVV1_2(W(1,16),W(1,42),-GC_3,MDL_MW,MDL_WW,W(1,21))
-C     Amplitude(s) for diagram number 206
-      CALL FFV2_0(W(1,2),W(1,1),W(1,21),GC_100,AMP(206))
-      CALL FFV1_2(W(1,55),W(1,16),GC_3,MDL_ME,ZERO,W(1,21))
-      CALL FFV2_3(W(1,21),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,55))
-C     Amplitude(s) for diagram number 207
-      CALL FFV2_0(W(1,2),W(1,1),W(1,55),GC_100,AMP(207))
-      CALL FFV2_3(W(1,31),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,55))
-      CALL FFV2_2(W(1,2),W(1,55),GC_100,MDL_MM,ZERO,W(1,21))
-C     Amplitude(s) for diagram number 208
-      CALL FFV1_0(W(1,21),W(1,1),W(1,17),GC_3,AMP(208))
-      CALL VVV1_2(W(1,17),W(1,55),-GC_3,MDL_MW,MDL_WW,W(1,21))
-C     Amplitude(s) for diagram number 209
-      CALL FFV2_0(W(1,2),W(1,1),W(1,21),GC_100,AMP(209))
-      CALL FFV1_2(W(1,31),W(1,17),GC_3,MDL_ME,ZERO,W(1,21))
-      CALL FFV2_3(W(1,21),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,31))
-C     Amplitude(s) for diagram number 210
-      CALL FFV2_0(W(1,2),W(1,1),W(1,31),GC_100,AMP(210))
-      CALL FFV2_3(W(1,20),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,31))
-      CALL FFV2_1(W(1,6),W(1,31),GC_100,ZERO,ZERO,W(1,21))
-      CALL FFV2_3(W(1,7),W(1,21),GC_100,MDL_MW,MDL_WW,W(1,17))
-C     Amplitude(s) for diagram number 211
-      CALL FFV2_0(W(1,2),W(1,1),W(1,17),GC_100,AMP(211))
-      CALL FFV1_2(W(1,7),W(1,44),GC_3,MDL_ME,ZERO,W(1,17))
-      CALL FFV2_3(W(1,17),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,44))
-C     Amplitude(s) for diagram number 212
-      CALL FFV2_0(W(1,2),W(1,1),W(1,44),GC_100,AMP(212))
-      CALL FFV1_2(W(1,7),W(1,24),GC_3,MDL_ME,ZERO,W(1,44))
-      CALL FFV2_3(W(1,44),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,24))
-C     Amplitude(s) for diagram number 213
-      CALL FFV2_0(W(1,2),W(1,1),W(1,24),GC_100,AMP(213))
-      CALL FFV1_2(W(1,4),W(1,25),GC_3,MDL_ME,ZERO,W(1,24))
-      CALL FFV2_3(W(1,24),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,25))
-C     Amplitude(s) for diagram number 214
-      CALL FFV2_0(W(1,2),W(1,1),W(1,25),GC_100,AMP(214))
-      CALL FFV2_1(W(1,6),W(1,38),GC_100,ZERO,ZERO,W(1,25))
-      CALL FFV2_3(W(1,4),W(1,25),GC_100,MDL_MW,MDL_WW,W(1,38))
-C     Amplitude(s) for diagram number 215
-      CALL FFV2_0(W(1,2),W(1,1),W(1,38),GC_100,AMP(215))
-      CALL FFV1_2(W(1,4),W(1,27),GC_3,MDL_ME,ZERO,W(1,38))
-      CALL FFV2_3(W(1,38),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,27))
-C     Amplitude(s) for diagram number 216
-      CALL FFV2_0(W(1,2),W(1,1),W(1,27),GC_100,AMP(216))
-      CALL FFV2_2(W(1,2),W(1,31),GC_100,MDL_MM,ZERO,W(1,27))
-C     Amplitude(s) for diagram number 217
-      CALL FFV1_0(W(1,27),W(1,1),W(1,13),GC_3,AMP(217))
-      CALL VVV1_2(W(1,13),W(1,31),-GC_3,MDL_MW,MDL_WW,W(1,27))
-C     Amplitude(s) for diagram number 218
-      CALL FFV2_0(W(1,2),W(1,1),W(1,27),GC_100,AMP(218))
-      CALL FFV1_2(W(1,20),W(1,13),GC_3,MDL_ME,ZERO,W(1,27))
-      CALL FFV2_3(W(1,27),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,20))
-C     Amplitude(s) for diagram number 219
-      CALL FFV2_0(W(1,2),W(1,1),W(1,20),GC_100,AMP(219))
-      CALL FFV2_3(W(1,47),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,20))
-      CALL FFV2_2(W(1,2),W(1,20),GC_100,MDL_MM,ZERO,W(1,27))
-C     Amplitude(s) for diagram number 220
-      CALL FFV1_0(W(1,27),W(1,1),W(1,22),GC_3,AMP(220))
-      CALL VVV1_2(W(1,22),W(1,20),-GC_3,MDL_MW,MDL_WW,W(1,27))
-C     Amplitude(s) for diagram number 221
-      CALL FFV2_0(W(1,2),W(1,1),W(1,27),GC_100,AMP(221))
-      CALL FFV1_2(W(1,47),W(1,22),GC_3,MDL_ME,ZERO,W(1,27))
-      CALL FFV2_3(W(1,27),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,47))
-C     Amplitude(s) for diagram number 222
-      CALL FFV2_0(W(1,2),W(1,1),W(1,47),GC_100,AMP(222))
-      CALL FFV2_1(W(1,8),W(1,20),GC_100,ZERO,ZERO,W(1,47))
-      CALL FFV2_3(W(1,5),W(1,47),GC_100,MDL_MW,MDL_WW,W(1,20))
-C     Amplitude(s) for diagram number 223
-      CALL FFV2_0(W(1,2),W(1,1),W(1,20),GC_100,AMP(223))
-      CALL FFV1_2(W(1,5),W(1,49),GC_3,MDL_ME,ZERO,W(1,20))
-      CALL FFV2_3(W(1,20),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,49))
-C     Amplitude(s) for diagram number 224
-      CALL FFV2_0(W(1,2),W(1,1),W(1,49),GC_100,AMP(224))
-      CALL FFV2_1(W(1,8),W(1,54),GC_100,ZERO,ZERO,W(1,49))
-      CALL FFV2_3(W(1,4),W(1,49),GC_100,MDL_MW,MDL_WW,W(1,54))
-C     Amplitude(s) for diagram number 225
-      CALL FFV2_0(W(1,2),W(1,1),W(1,54),GC_100,AMP(225))
-      CALL FFV1_2(W(1,4),W(1,29),GC_3,MDL_ME,ZERO,W(1,54))
-      CALL FFV2_3(W(1,54),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,29))
-C     Amplitude(s) for diagram number 226
-      CALL FFV2_0(W(1,2),W(1,1),W(1,29),GC_100,AMP(226))
-      CALL FFV1_2(W(1,5),W(1,48),GC_3,MDL_ME,ZERO,W(1,29))
-      CALL FFV2_3(W(1,29),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,48))
-C     Amplitude(s) for diagram number 227
-      CALL FFV2_0(W(1,2),W(1,1),W(1,48),GC_100,AMP(227))
-      CALL FFV1_2(W(1,4),W(1,32),GC_3,MDL_ME,ZERO,W(1,48))
-      CALL FFV2_3(W(1,48),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,32))
-C     Amplitude(s) for diagram number 228
-      CALL FFV2_0(W(1,2),W(1,1),W(1,32),GC_100,AMP(228))
-      CALL FFV2_1(W(1,6),W(1,55),GC_100,ZERO,ZERO,W(1,32))
-      CALL FFV2_3(W(1,5),W(1,32),GC_100,MDL_MW,MDL_WW,W(1,55))
-C     Amplitude(s) for diagram number 229
-      CALL FFV2_0(W(1,2),W(1,1),W(1,55),GC_100,AMP(229))
-      CALL FFV1_2(W(1,5),W(1,11),GC_3,MDL_ME,ZERO,W(1,55))
-      CALL FFV2_3(W(1,55),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,11))
-C     Amplitude(s) for diagram number 230
-      CALL FFV2_0(W(1,2),W(1,1),W(1,11),GC_100,AMP(230))
-      CALL FFV2_1(W(1,6),W(1,10),GC_100,ZERO,ZERO,W(1,11))
-      CALL FFV2_3(W(1,4),W(1,11),GC_100,MDL_MW,MDL_WW,W(1,10))
-C     Amplitude(s) for diagram number 231
-      CALL FFV2_0(W(1,2),W(1,1),W(1,10),GC_100,AMP(231))
-      CALL FFV1_2(W(1,4),W(1,30),GC_3,MDL_ME,ZERO,W(1,10))
-      CALL FFV2_3(W(1,10),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,30))
-C     Amplitude(s) for diagram number 232
-      CALL FFV2_0(W(1,2),W(1,1),W(1,30),GC_100,AMP(232))
-      CALL FFV1_2(W(1,5),W(1,34),GC_3,MDL_ME,ZERO,W(1,30))
-      CALL FFV2_3(W(1,30),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,34))
-C     Amplitude(s) for diagram number 233
-      CALL FFV2_0(W(1,2),W(1,1),W(1,34),GC_100,AMP(233))
-      CALL FFV1_2(W(1,4),W(1,33),GC_3,MDL_ME,ZERO,W(1,34))
-      CALL FFV2_3(W(1,34),W(1,3),GC_100,MDL_MW,MDL_WW,W(1,33))
-C     Amplitude(s) for diagram number 234
-      CALL FFV2_0(W(1,2),W(1,1),W(1,33),GC_100,AMP(234))
-      JAMP(1)=+AMP(1)-AMP(2)-AMP(3)+AMP(4)+AMP(5)+AMP(6)+AMP(7)+AMP(8)
-     $ +AMP(9)+AMP(10)+AMP(11)+AMP(12)+AMP(13)+AMP(14)+AMP(15)+AMP(16)
-     $ +AMP(17)+AMP(18)+AMP(19)+AMP(20)-AMP(21)-AMP(22)-AMP(23)-AMP(24)
-     $ -AMP(25)-AMP(26)-AMP(27)-AMP(28)-AMP(29)-AMP(30)-AMP(31)-AMP(32)
-     $ -AMP(33)-AMP(34)-AMP(35)-AMP(36)-AMP(37)-AMP(38)-AMP(39)-AMP(40)
-     $ -AMP(41)-AMP(42)-AMP(43)-AMP(44)-AMP(45)+AMP(46)+AMP(47)+AMP(48)
-     $ +AMP(49)+AMP(50)+AMP(51)+AMP(52)+AMP(53)+AMP(54)-AMP(55)+AMP(56)
-     $ +AMP(57)-AMP(58)-AMP(59)-AMP(60)-AMP(61)-AMP(62)-AMP(63)-AMP(64)
-     $ -AMP(65)-AMP(66)-AMP(67)-AMP(68)-AMP(69)-AMP(70)-AMP(71)-AMP(72)
-     $ -AMP(73)-AMP(74)+AMP(75)+AMP(76)+AMP(77)+AMP(78)+AMP(79)+AMP(80)
-     $ +AMP(81)+AMP(82)+AMP(83)+AMP(84)+AMP(85)+AMP(86)+AMP(87)+AMP(88)
-     $ +AMP(89)+AMP(90)+AMP(91)+AMP(92)+AMP(93)+AMP(94)+AMP(95)+AMP(96)
-     $ +AMP(97)+AMP(98)+AMP(99)-AMP(100)-AMP(101)-AMP(102)-AMP(103)
-     $ -AMP(104)-AMP(105)-AMP(106)-AMP(107)-AMP(108)+AMP(109)-AMP(110)
-     $ -AMP(111)+AMP(112)+AMP(113)+AMP(114)+AMP(115)+AMP(116)+AMP(117)
-     $ +AMP(118)+AMP(119)+AMP(120)+AMP(121)+AMP(122)+AMP(123)+AMP(124)
-     $ +AMP(125)+AMP(126)+AMP(127)+AMP(128)-AMP(129)-AMP(130)-AMP(131)
-     $ -AMP(132)-AMP(133)-AMP(134)-AMP(135)-AMP(136)-AMP(137)-AMP(138)
-     $ -AMP(139)-AMP(140)-AMP(141)-AMP(142)-AMP(143)-AMP(144)-AMP(145)
-     $ -AMP(146)-AMP(147)-AMP(148)-AMP(149)-AMP(150)-AMP(151)-AMP(152)
-     $ -AMP(153)+AMP(154)+AMP(155)+AMP(156)+AMP(157)+AMP(158)+AMP(159)
-     $ +AMP(160)+AMP(161)+AMP(162)-AMP(163)+AMP(164)+AMP(165)-AMP(166)
-     $ +AMP(167)-AMP(168)+AMP(169)+AMP(170)+AMP(171)+AMP(172)+AMP(173)
-     $ +AMP(174)-AMP(175)-AMP(176)-AMP(177)-AMP(178)-AMP(179)-AMP(180)
-     $ +AMP(181)-AMP(182)-AMP(183)+AMP(184)-AMP(185)+AMP(186)-AMP(187)
-     $ -AMP(188)-AMP(189)-AMP(190)-AMP(191)-AMP(192)+AMP(193)+AMP(194)
-     $ +AMP(195)+AMP(196)+AMP(197)+AMP(198)+AMP(199)-AMP(200)-AMP(201)
-     $ +AMP(202)-AMP(203)+AMP(204)+AMP(205)+AMP(206)+AMP(207)+AMP(208)
-     $ +AMP(209)+AMP(210)-AMP(211)+AMP(212)+AMP(213)-AMP(214)+AMP(215)
-     $ -AMP(216)-AMP(217)-AMP(218)-AMP(219)-AMP(220)-AMP(221)-AMP(222)
-     $ -AMP(223)+AMP(224)+AMP(225)-AMP(226)+AMP(227)-AMP(228)+AMP(229)
-     $ -AMP(230)-AMP(231)+AMP(232)-AMP(233)+AMP(234)
+      CALL FFV2_0(W(1,2),W(1,1),W(1,29),GC_40,AMP(84))
+      JAMP(1)=+AMP(1)+AMP(2)+AMP(3)+AMP(4)-AMP(5)-AMP(6)-AMP(7)-AMP(8)
+     $ -AMP(9)-AMP(10)+AMP(11)+AMP(12)-AMP(13)-AMP(14)-AMP(15)-AMP(16)
+     $ +AMP(17)+AMP(18)+AMP(19)+AMP(20)+AMP(21)+AMP(22)-AMP(23)-AMP(24)
+     $ +AMP(25)+AMP(26)+AMP(27)+AMP(28)-AMP(29)-AMP(30)-AMP(31)-AMP(32)
+     $ -AMP(33)-AMP(34)+AMP(35)+AMP(36)+AMP(37)-AMP(38)+AMP(39)-AMP(40)
+     $ +AMP(41)+AMP(42)+AMP(43)+AMP(44)-AMP(45)-AMP(46)-AMP(47)-AMP(48)
+     $ -AMP(49)-AMP(50)+AMP(51)+AMP(52)-AMP(53)-AMP(54)-AMP(55)-AMP(56)
+     $ +AMP(57)+AMP(58)+AMP(59)+AMP(60)-AMP(61)+AMP(62)-AMP(63)+AMP(64)
+     $ +AMP(65)+AMP(66)+AMP(67)+AMP(68)+AMP(69)+AMP(70)-AMP(71)-AMP(72)
+     $ -AMP(73)-AMP(74)-AMP(75)-AMP(76)+AMP(77)-AMP(78)+AMP(79)-AMP(80)
+     $ -AMP(81)+AMP(82)-AMP(83)+AMP(84)
 
       MATRIX = 0.D0
       DO I = 1, NCOLOR

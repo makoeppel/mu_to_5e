@@ -12,15 +12,15 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       COMMON/RSCALE/ MU_R
 
       DOUBLE PRECISION NF
-      PARAMETER(NF=4D0)
+      PARAMETER(NF=3D0)
       DOUBLE PRECISION NL
       PARAMETER(NL=0D0)
 
-      DOUBLE PRECISION MDL_MB,MDL_MH,MDL_MM,MDL_MT,MDL_MTA,MDL_MW
-     $ ,MDL_MZ,MDL_ME
+      DOUBLE PRECISION MDL_MB,MDL_MC,MDL_MH,MDL_MM,MDL_MT,MDL_MTA
+     $ ,MDL_MW,MDL_MZ,MDL_ME
 
-      COMMON/MASSES/ MDL_MB,MDL_MH,MDL_MM,MDL_MT,MDL_MTA,MDL_MW,MDL_MZ
-     $ ,MDL_ME
+      COMMON/MASSES/ MDL_MB,MDL_MC,MDL_MH,MDL_MM,MDL_MT,MDL_MTA,MDL_MW
+     $ ,MDL_MZ,MDL_ME
 
 
       DOUBLE PRECISION MDL_WH,MDL_WT,MDL_WTAU,MDL_WW,MDL_WZ
@@ -28,7 +28,7 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       COMMON/WIDTHS/ MDL_WH,MDL_WT,MDL_WTAU,MDL_WW,MDL_WZ
 
 
-      DOUBLE COMPLEX GC_3, GC_5, GC_100
+      DOUBLE COMPLEX GC_3, GC_40
 
-      COMMON/COUPLINGS/ GC_3, GC_5, GC_100
+      COMMON/COUPLINGS/ GC_3, GC_40
 

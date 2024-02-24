@@ -40,6 +40,6 @@ define l+ = e+ mu+
 define l- = e- mu-
 define vl = ve vm vt
 define vl~ = ve~ vm~ vt~
-import model sm-lepton_masses
-generate mu+ > vm~ ve e+ e+ e- e+ e- / z h
-output standalone ../m5e2nu/
+import model sm-full
+generate mu+ > vm~ ve e+ e+ e- e+ e- / Z h --diagram_filter
+output standalone mu5e2nu

@@ -2,7 +2,6 @@ import numpy as np
 import os
 from scipy.interpolate import interp1d
 from particle import literals as lp
-from DarkNews import Cfourvec as Cfv
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
 
@@ -70,7 +69,7 @@ def beam_transverse(x, y):
     return gauss(x, 7.50) * gauss(y, 8.74)
 
 
-def get_decay_positions_in_target(nsamples: int):
+def get_decay_positions_in_target(nsamples: int, volume: bool = False):
     """get_decay_positions_in_target returns x,y,z positions muon decays inside double-cone target
 
     Parameters
@@ -88,12 +87,23 @@ def get_decay_positions_in_target(nsamples: int):
     events = np.array(3 * [[]]).T
     while target_samples < nsamples:
         z = np.random.uniform(-target_L / 2, target_L / 2, nsamples)
-        x = np.random.uniform(-target_R, target_R, nsamples)
-        y = np.random.uniform(-target_R, target_R, nsamples)
-        new_events = np.array([x, y, z]).T
-        events = np.concatenate(
-            (events, new_events[np.where(r(x, y) < Rcone(z))]), axis=0
-        )
+
+        if volume:
+            x = np.random.uniform(-target_R, target_R, nsamples)
+            y = np.random.uniform(-target_R, target_R, nsamples)
+
+            new_events = np.array([x, y, z]).T
+            events = np.concatenate((events, new_events[r(x, y) < Rcone(z)]), axis=0)
+
+        else:
+            R = Rcone(z)
+            phi = np.random.uniform(0, 2 * np.pi, nsamples)
+            x = R * np.cos(phi)
+            y = R * np.sin(phi)
+
+            new_events = np.array([x, y, z]).T
+            events = np.concatenate((events, new_events), axis=0)
+
         target_samples = np.shape(events)[0]
 
     events = events[:nsamples]
@@ -102,7 +112,7 @@ def get_decay_positions_in_target(nsamples: int):
     zposfit = np.poly1d(np.load(f"{this_dir}/exp_params/zpos_fit_pdf.npy"))
 
     weights = zposfit(events[:, -1])
-    weights *= beam_transverse(events[:, 0], events[:, 1])
+    # weights *= beam_transverse(events[:, 0], events[:, 1])
 
     return events, weights / np.sum(weights)
 
@@ -115,7 +125,6 @@ p, dp = np.genfromtxt("Mu3e/exp_params/p_resolution_long_6hits.dat", unpack=True
 res_long_6 = interp1d(
     p, dp, kind="linear", fill_value=(dp[0], dp[-1]), bounds_error=False
 )
-
 p, dp = np.genfromtxt("Mu3e/exp_params/p_resolution_short.dat", unpack=True)
 res_short = interp1d(
     p, dp, kind="linear", fill_value=(dp[0], dp[-1]), bounds_error=False
@@ -136,9 +145,9 @@ def smear_samples(particles, nhits):
             sigma_p = res
 
             # compute kinetic energy and spherical angles
-            p_r = Cfv.random_normal(p, sigma_p)
+            p_r = np.random.normal(loc=p, scale=sigma_p)
 
-            # Unfortunately, a Gaussian energy smearing can give non-physical results.
+            # Unfortunately, a Gaussian energy smearing can yield non-physical momenta
             p_r[p_r < 0] = 0  # force smearing to be positive for p
 
             # put data in an array and then in a DataFrame

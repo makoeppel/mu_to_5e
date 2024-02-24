@@ -5,6 +5,7 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       WRITE(*,*)  ' External Params'
       WRITE(*,*)  ' ---------------------------------'
       WRITE(*,*)  ' '
+      WRITE(*,*) 'mdl_MC = ', MDL_MC
       WRITE(*,*) 'mdl_MB = ', MDL_MB
       WRITE(*,*) 'mdl_MT = ', MDL_MT
       WRITE(*,*) 'mdl_Me = ', MDL_ME
@@ -15,6 +16,11 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       WRITE(*,*) 'aEWM1 = ', AEWM1
       WRITE(*,*) 'mdl_Gf = ', MDL_GF
       WRITE(*,*) 'aS = ', AS
+      WRITE(*,*) 'mdl_lamWS = ', MDL_LAMWS
+      WRITE(*,*) 'mdl_AWS = ', MDL_AWS
+      WRITE(*,*) 'mdl_rhoWS = ', MDL_RHOWS
+      WRITE(*,*) 'mdl_etaWS = ', MDL_ETAWS
+      WRITE(*,*) 'mdl_ymc = ', MDL_YMC
       WRITE(*,*) 'mdl_ymb = ', MDL_YMB
       WRITE(*,*) 'mdl_ymt = ', MDL_YMT
       WRITE(*,*) 'mdl_yme = ', MDL_YME
@@ -28,14 +34,31 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       WRITE(*,*)  ' Internal Params'
       WRITE(*,*)  ' ---------------------------------'
       WRITE(*,*)  ' '
-      WRITE(*,*) 'mdl_conjg__CKM1x1 = ', MDL_CONJG__CKM1X1
-      WRITE(*,*) 'mdl_CKM3x3 = ', MDL_CKM3X3
-      WRITE(*,*) 'mdl_conjg__CKM3x3 = ', MDL_CONJG__CKM3X3
+      WRITE(*,*) 'mdl_lamWS__exp__2 = ', MDL_LAMWS__EXP__2
+      WRITE(*,*) 'mdl_CKM1x1 = ', MDL_CKM1X1
+      WRITE(*,*) 'mdl_CKM1x2 = ', MDL_CKM1X2
       WRITE(*,*) 'mdl_complexi = ', MDL_COMPLEXI
+      WRITE(*,*) 'mdl_lamWS__exp__3 = ', MDL_LAMWS__EXP__3
+      WRITE(*,*) 'mdl_CKM1x3 = ', MDL_CKM1X3
+      WRITE(*,*) 'mdl_CKM2x1 = ', MDL_CKM2X1
+      WRITE(*,*) 'mdl_CKM2x2 = ', MDL_CKM2X2
+      WRITE(*,*) 'mdl_CKM2x3 = ', MDL_CKM2X3
+      WRITE(*,*) 'mdl_CKM3x1 = ', MDL_CKM3X1
+      WRITE(*,*) 'mdl_CKM3x2 = ', MDL_CKM3X2
+      WRITE(*,*) 'mdl_CKM3x3 = ', MDL_CKM3X3
       WRITE(*,*) 'mdl_MZ__exp__2 = ', MDL_MZ__EXP__2
       WRITE(*,*) 'mdl_MZ__exp__4 = ', MDL_MZ__EXP__4
       WRITE(*,*) 'mdl_sqrt__2 = ', MDL_SQRT__2
       WRITE(*,*) 'mdl_MH__exp__2 = ', MDL_MH__EXP__2
+      WRITE(*,*) 'mdl_conjg__CKM1x3 = ', MDL_CONJG__CKM1X3
+      WRITE(*,*) 'mdl_conjg__CKM2x3 = ', MDL_CONJG__CKM2X3
+      WRITE(*,*) 'mdl_conjg__CKM3x3 = ', MDL_CONJG__CKM3X3
+      WRITE(*,*) 'mdl_conjg__CKM2x1 = ', MDL_CONJG__CKM2X1
+      WRITE(*,*) 'mdl_conjg__CKM3x1 = ', MDL_CONJG__CKM3X1
+      WRITE(*,*) 'mdl_conjg__CKM2x2 = ', MDL_CONJG__CKM2X2
+      WRITE(*,*) 'mdl_conjg__CKM3x2 = ', MDL_CONJG__CKM3X2
+      WRITE(*,*) 'mdl_conjg__CKM1x1 = ', MDL_CONJG__CKM1X1
+      WRITE(*,*) 'mdl_conjg__CKM1x2 = ', MDL_CONJG__CKM1X2
       WRITE(*,*) 'mdl_aEW = ', MDL_AEW
       WRITE(*,*) 'mdl_MW = ', MDL_MW
       WRITE(*,*) 'mdl_sqrt__aEW = ', MDL_SQRT__AEW
@@ -51,14 +74,29 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       WRITE(*,*) 'mdl_vev__exp__2 = ', MDL_VEV__EXP__2
       WRITE(*,*) 'mdl_lam = ', MDL_LAM
       WRITE(*,*) 'mdl_yb = ', MDL_YB
+      WRITE(*,*) 'mdl_yc = ', MDL_YC
       WRITE(*,*) 'mdl_ye = ', MDL_YE
       WRITE(*,*) 'mdl_ym = ', MDL_YM
       WRITE(*,*) 'mdl_yt = ', MDL_YT
       WRITE(*,*) 'mdl_ytau = ', MDL_YTAU
       WRITE(*,*) 'mdl_muH = ', MDL_MUH
+      WRITE(*,*) 'mdl_I1x31 = ', MDL_I1X31
+      WRITE(*,*) 'mdl_I1x32 = ', MDL_I1X32
       WRITE(*,*) 'mdl_I1x33 = ', MDL_I1X33
+      WRITE(*,*) 'mdl_I2x12 = ', MDL_I2X12
+      WRITE(*,*) 'mdl_I2x13 = ', MDL_I2X13
+      WRITE(*,*) 'mdl_I2x22 = ', MDL_I2X22
+      WRITE(*,*) 'mdl_I2x23 = ', MDL_I2X23
+      WRITE(*,*) 'mdl_I2x32 = ', MDL_I2X32
       WRITE(*,*) 'mdl_I2x33 = ', MDL_I2X33
+      WRITE(*,*) 'mdl_I3x21 = ', MDL_I3X21
+      WRITE(*,*) 'mdl_I3x22 = ', MDL_I3X22
+      WRITE(*,*) 'mdl_I3x23 = ', MDL_I3X23
+      WRITE(*,*) 'mdl_I3x31 = ', MDL_I3X31
+      WRITE(*,*) 'mdl_I3x32 = ', MDL_I3X32
       WRITE(*,*) 'mdl_I3x33 = ', MDL_I3X33
+      WRITE(*,*) 'mdl_I4x13 = ', MDL_I4X13
+      WRITE(*,*) 'mdl_I4x23 = ', MDL_I4X23
       WRITE(*,*) 'mdl_I4x33 = ', MDL_I4X33
       WRITE(*,*) 'mdl_ee__exp__2 = ', MDL_EE__EXP__2
       WRITE(*,*) 'mdl_sw__exp__2 = ', MDL_SW__EXP__2

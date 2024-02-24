@@ -1,11 +1,7 @@
 import numpy as np
-import DarkNews as dn
 from particle import literals as lp
 
-from .mudecays import Gamma_mu
-
-MeV_to_GeV = 1e-3
-cm_to_mm = 1e1
+from .mudecays import const
 
 
 def f_PS(x):
@@ -36,7 +32,7 @@ class DS:
             )
 
         self.GammaAprime = (
-            dn.const.alphaQED
+            const.alphaQED
             * self.epsilon**2
             * self.maprime
             / 3
@@ -57,25 +53,31 @@ class DS:
         return (
             self.Femu**2
             * lp.mu_minus.mass
-            / 8
+            / 16
             / np.pi
-            * dn.const.kallen_sqrt(1, rl**2, rphi**2)
+            * const.kallen_sqrt(1, rl**2, rphi**2)
             * ((1 + rl) ** 2 - rphi**2)
-            / Gamma_mu
+            / const.muon_decay_rate
         )
 
     # mm
     def get_phi_ctau0(self):
-        return dn.const.get_decay_rate_in_cm(self.GammaPhi * MeV_to_GeV) * cm_to_mm
+        return (
+            const.get_decay_rate_in_cm(self.GammaPhi * const.MeV_to_GeV)
+            * const.cm_to_mm
+        )
 
     # s
     def get_phi_tau0(self):
-        return dn.const.get_decay_rate_in_s(self.GammaPhi * MeV_to_GeV)
+        return const.get_decay_rate_in_s(self.GammaPhi * const.MeV_to_GeV)
 
     # mm
     def get_aprime_ctau0(self):
-        return dn.const.get_decay_rate_in_cm(self.GammaAprime * MeV_to_GeV) * cm_to_mm
+        return (
+            const.get_decay_rate_in_cm(self.GammaAprime * const.MeV_to_GeV)
+            * const.cm_to_mm
+        )
 
     # s
     def get_aprime_tau0(self):
-        return dn.const.get_decay_rate_in_s(self.GammaAprime * MeV_to_GeV)
+        return const.get_decay_rate_in_s(self.GammaAprime * const.MeV_to_GeV)
